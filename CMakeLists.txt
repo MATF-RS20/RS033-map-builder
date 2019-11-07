@@ -12,6 +12,7 @@ endif()
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 include_directories(cmake-build-debug/map_maker_autogen/include)
+set(CMAKE_AUTOUIC_SEARCH_PATHS ui/)
 add_executable(map_maker
         ui/main_window.ui
         src/main_window.cpp
