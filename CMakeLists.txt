@@ -17,7 +17,7 @@ add_executable(map_maker
         ui/main_window.ui
         src/main_window.cpp
         src/main.cpp
-#        resources.qrc
+        ./resources.qrc
         )
 
 target_link_libraries(map_maker Qt5::Widgets)
