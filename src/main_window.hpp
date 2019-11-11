@@ -5,7 +5,7 @@
 
 namespace Ui
 {
-    class MainWindow;
+    class main_window;
 };
 class main_window : public QMainWindow
 {
@@ -15,7 +15,7 @@ public:
     ~main_window();
 
 private:
-   Ui::MainWindow *ui;
+   Ui::main_window *ui;
 };
 
 #endif
