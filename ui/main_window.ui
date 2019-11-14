@@ -35,7 +35,17 @@
         <item>
          <widget class="QPushButton" name="bt_terrain">
           <property name="text">
-           <string>Terrain</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources.qrc">
+            <normaloff>:/icons/images/icons/terrain_invert.png</normaloff>:/icons/images/icons/terrain_invert.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>64</width>
+            <height>32</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -94,7 +104,7 @@
              <x>0</x>
              <y>0</y>
              <width>98</width>
-             <height>154</height>
+             <height>148</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout">
@@ -145,7 +155,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/undo.svg</normaloff>:/icons/images/icons/undo.svg</iconset>
+            <normaloff>:/icons/images/icons/undo_invert.png</normaloff>:/icons/images/icons/undo_invert.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -174,7 +184,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/redo.svg</normaloff>:/icons/images/icons/redo.svg</iconset>
+            <normaloff>:/icons/images/icons/redo_invert.png</normaloff>:/icons/images/icons/redo_invert.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -203,7 +213,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/preview.svg</normaloff>:/icons/images/icons/preview.svg</iconset>
+            <normaloff>:/icons/images/icons/preview_invert.png</normaloff>:/icons/images/icons/preview_invert.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -232,7 +242,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/zoom_in.svg</normaloff>:/icons/images/icons/zoom_in.svg</iconset>
+            <normaloff>:/icons/images/icons/zoom_in_invert.png</normaloff>:/icons/images/icons/zoom_in_invert.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -261,7 +271,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/zoom_out.svg</normaloff>:/icons/images/icons/zoom_out.svg</iconset>
+            <normaloff>:/icons/images/icons/zoom_out_invert.png</normaloff>:/icons/images/icons/zoom_out_invert.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -303,7 +313,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/rotate_left.svg</normaloff>:/icons/images/icons/rotate_left.svg</iconset>
+            <normaloff>:/icons/images/icons/rotate_left_invert.png</normaloff>:/icons/images/icons/rotate_left_invert.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -332,7 +342,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/rotate_right.svg</normaloff>:/icons/images/icons/rotate_right.svg</iconset>
+            <normaloff>:/icons/images/icons/rotate_right_invert.png</normaloff>:/icons/images/icons/rotate_right_invert.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -361,7 +371,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/select_arrow.svg</normaloff>:/icons/images/icons/select_arrow.svg</iconset>
+            <normaloff>:/icons/images/icons/select_arrow_invert.png</normaloff>:/icons/images/icons/select_arrow_invert.png</iconset>
           </property>
           <property name="iconSize">
            <size>

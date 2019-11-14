@@ -7,13 +7,23 @@
         <file>style3.qss</file>
     </qresource>
     <qresource prefix="/icons">
-        <file>images/icons/preview.svg</file>
-        <file>images/icons/zoom_out.svg</file>
-        <file>images/icons/undo.svg</file>
-        <file>images/icons/zoom_in.svg</file>
-        <file>images/icons/select_arrow.svg</file>
-        <file>images/icons/rotate_left.svg</file>
-        <file>images/icons/rotate_right.svg</file>
-        <file>images/icons/redo.svg</file>
+        <file>images/icons/terrain.png</file>
+        <file>images/icons/terrain_invert.png</file>
+        <file>images/icons/preview_invert.png</file>
+        <file>images/icons/preview.png</file>
+        <file>images/icons/redo_invert.png</file>
+        <file>images/icons/redo.png</file>
+        <file>images/icons/rotate_left_invert.png</file>
+        <file>images/icons/rotate_left.png</file>
+        <file>images/icons/rotate_right_invert.png</file>
+        <file>images/icons/rotate_right.png</file>
+        <file>images/icons/select_arrow_invert.png</file>
+        <file>images/icons/select_arrow.png</file>
+        <file>images/icons/undo_invert.png</file>
+        <file>images/icons/undo.png</file>
+        <file>images/icons/zoom_in_invert.png</file>
+        <file>images/icons/zoom_in.png</file>
+        <file>images/icons/zoom_out_invert.png</file>
+        <file>images/icons/zoom_out.png</file>
     </qresource>
 </RCC>
