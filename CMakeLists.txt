@@ -17,8 +17,10 @@ add_executable(map_builder
         ui/main_window.ui
         src/main_window.cpp
         include/main_window.hpp
+        include/pop_up_menu.hpp
         #include/linear_executor.hpp
         #include/utils.hpp
+        src/pop_up_menu.cpp
         src/main.cpp
         ./resources.qrc
         )

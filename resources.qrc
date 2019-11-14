@@ -25,5 +25,11 @@
         <file>images/icons/zoom_in.png</file>
         <file>images/icons/zoom_out_invert.png</file>
         <file>images/icons/zoom_out.png</file>
+        <file>images/icons/land_inverted.png</file>
+        <file>images/icons/land.png</file>
+        <file>images/icons/water-inverted.png</file>
+        <file>images/icons/water.png</file>
+        <file>images/icons/land_2.png</file>
+        <file>images/icons/land_inverted_2.png</file>
     </qresource>
 </RCC>

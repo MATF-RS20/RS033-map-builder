@@ -138,14 +138,14 @@ QToolButton
 
 QToolButton::hover
 {
-	background-color: #917a51;
+        background-color: #917a51;
 
 }
 
 
 QToolButton::pressed
 {
-	background-color: #724e22;
+        background-color: #724e22;
 
 }
 
@@ -153,6 +153,40 @@ QToolButton::checked
 {
 	background-color: #724e22;
 
+}
+
+QToolButton::menu-indicator
+{
+        image: none;
+}
+
+/*-----QPushButton-----*/
+QPushButton
+{
+        background-color: #323232;
+        border: 1px solid #111111;
+        border-radius: 5px;
+        margin-left: 4px;
+        padding: 5px;
+}
+
+QPushButton::hover
+{
+        background-color: #917a51;
+        border: 1px solid black;
+        border-radius: 3px;
+}
+
+
+QPushButton::pressed
+{
+        background-color: #724e22;
+}
+
+
+QPushButton::checked
+{
+        background-color: #724e22;
 }
 
 
