@@ -32,7 +32,6 @@ namespace map_builder
             RetVal execute(Args... args)
             {
                 auto sub_class = reinterpret_cast<linear_executor<Callabels...>*>(this);
-                std::cout << length<Callabels...>::value << std::endl;
                 return
                         (std::any_cast<FirstCallable>(sub_class->m_callables[0])(args...)
                     %
