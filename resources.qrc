@@ -1,11 +1,19 @@
 <RCC>
-    <qresource prefix="/">
-        <file>.</file>
-    </qresource>
+    <qresource prefix="/"/>
     <qresource prefix="/styles">
         <file>style.qss</file>
         <file>style1.qss</file>
         <file>style2.qss</file>
         <file>style3.qss</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file>images/icons/preview.svg</file>
+        <file>images/icons/zoom_out.svg</file>
+        <file>images/icons/undo.svg</file>
+        <file>images/icons/zoom_in.svg</file>
+        <file>images/icons/select_arrow.svg</file>
+        <file>images/icons/rotate_left.svg</file>
+        <file>images/icons/rotate_right.svg</file>
+        <file>images/icons/redo.svg</file>
     </qresource>
 </RCC>

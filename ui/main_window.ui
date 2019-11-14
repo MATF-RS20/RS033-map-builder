@@ -94,7 +94,7 @@
              <x>0</x>
              <y>0</y>
              <width>98</width>
-             <height>153</height>
+             <height>154</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout">
@@ -141,7 +141,17 @@
            </size>
           </property>
           <property name="text">
-           <string>&lt;=</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources.qrc">
+            <normaloff>:/icons/images/icons/undo.svg</normaloff>:/icons/images/icons/undo.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>16</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -160,7 +170,17 @@
            </size>
           </property>
           <property name="text">
-           <string>=&gt;</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources.qrc">
+            <normaloff>:/icons/images/icons/redo.svg</normaloff>:/icons/images/icons/redo.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>16</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -179,7 +199,17 @@
            </size>
           </property>
           <property name="text">
-           <string>&gt;</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources.qrc">
+            <normaloff>:/icons/images/icons/preview.svg</normaloff>:/icons/images/icons/preview.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>16</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -198,7 +228,17 @@
            </size>
           </property>
           <property name="text">
-           <string>+</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources.qrc">
+            <normaloff>:/icons/images/icons/zoom_in.svg</normaloff>:/icons/images/icons/zoom_in.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>16</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -217,7 +257,17 @@
            </size>
           </property>
           <property name="text">
-           <string>-</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources.qrc">
+            <normaloff>:/icons/images/icons/zoom_out.svg</normaloff>:/icons/images/icons/zoom_out.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>16</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -249,7 +299,17 @@
            </size>
           </property>
           <property name="text">
-           <string>RL</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources.qrc">
+            <normaloff>:/icons/images/icons/rotate_left.svg</normaloff>:/icons/images/icons/rotate_left.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>16</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -268,7 +328,17 @@
            </size>
           </property>
           <property name="text">
-           <string>RR</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources.qrc">
+            <normaloff>:/icons/images/icons/rotate_right.svg</normaloff>:/icons/images/icons/rotate_right.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>16</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -287,7 +357,17 @@
            </size>
           </property>
           <property name="text">
-           <string>Select</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources.qrc">
+            <normaloff>:/icons/images/icons/select_arrow.svg</normaloff>:/icons/images/icons/select_arrow.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>16</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -430,6 +510,8 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
