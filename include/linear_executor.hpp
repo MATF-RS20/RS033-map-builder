@@ -53,14 +53,12 @@ namespace map_builder
             typename details::make_index<typename details::tail<Callables...>::type >::type
             >
     {
-    public:
-        explicit linear_executor(Callables&&... callables)
-        :   m_callables{std::move(callables)...}
+    private :
+        template<typename ...U>
+        explicit linear_executor(U&&... callables)
+        :   m_callables{std::forward<U>(callables)...}
         {}
 
-        explicit linear_executor(const Callables&... callables)
-        :   m_callables{callables...}
-        {}
 
 
 
@@ -74,8 +72,15 @@ namespace map_builder
                 typename details::tail<Callables...>::type,
                 typename details::make_index<typename details::tail<Callables...>::type >::type
         >;
-
+        template <typename ...U>
+        friend linear_executor<std::remove_reference_t<U>...> make_linear_executor(U&&... args);
     };
+
+    template <typename ...U>
+    linear_executor<std::remove_reference_t<U>...> make_linear_executor(U&&... args)
+    {
+        return linear_executor<std::remove_reference_t<U>...>(std::forward<U>(args)...);
+    }
 }
 
 #endif //MAP_MAKER_LINEAR_EXECUTOR_HPP
