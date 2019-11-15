@@ -5,9 +5,9 @@
 #ifndef MAP_MAKER_FUNCTION_TRAITS_HPP
 #define MAP_MAKER_FUNCTION_TRAITS_HPP
 
-#include "type_list.hpp"
+#include "list.hpp"
 
-namespace map_builder::details
+namespace map_builder::mp
 {
 
     template<typename CallableObject>
@@ -38,10 +38,7 @@ namespace map_builder::details
         using arguments_type = list<Arguments...>;
     };
 
-    template<typename F>
-    using function_traits_return_value_t=  typename function_traits<F>::return_value_type;
-    template<typename F>
-    using function_traits_arguments_list_t=  typename function_traits<F>::arguments_type;
+    
 }
 
 #endif //MAP_MAKER_FUNCTION_TRAITS_HPP
