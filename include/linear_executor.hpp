@@ -3,10 +3,10 @@
 
 #include <array>
 #include <any>
-#include "make_index.hpp"
-#include "type_list.hpp"
-#include "type_pack.hpp"
-#include "function_traits.hpp"
+#include "mp/make_index.hpp"
+#include "mp/list.hpp"
+#include "mp/pack.hpp"
+#include "mp/function_traits.hpp"
 
 namespace map_builder
 {
@@ -16,7 +16,7 @@ namespace map_builder
     {
 
         template<typename T, typename T1>
-        inline typename function_traits<T1>::return_value_type  operator%(T &&t, T1 &&t1)
+        inline typename mp::function_traits<T1>::return_value_type  operator%(T &&t, T1 &&t1)
         {
             return std::invoke(std::forward<T1>(t1), std::forward<T>(t));
         }
@@ -27,7 +27,7 @@ namespace map_builder
 
 
         template<typename RetVal, typename FirstCallable, typename ...Callabels, typename ...Args, typename ...RestCallabels, typename ...indexes>
-        struct gen_execute<RetVal, list<Args...>, linear_executor<Callabels...>, FirstCallable, list<RestCallabels...>, list<indexes...>>
+        struct gen_execute<RetVal, mp::list<Args...>, linear_executor<Callabels...>, FirstCallable, mp::list<RestCallabels...>, mp::list<indexes...>>
         {
             RetVal execute(Args... args)
             {
@@ -35,7 +35,7 @@ namespace map_builder
                 return
                         (std::any_cast<FirstCallable>(sub_class->m_callables[0])(args...)
                     %
-                ...% std::any_cast<typename get<indexes::value, RestCallabels...>::type>(
+                ...% std::any_cast<typename mp::get<indexes::value, RestCallabels...>::type>(
                                 sub_class->m_callables[indexes::value+1]) );
 
             }
@@ -44,12 +44,12 @@ namespace map_builder
 
     template <typename ...Callables>
     class linear_executor : public details::gen_execute<
-            typename details::function_traits<typename details::get<details::length<Callables...>::value-1, Callables...>::type>::return_value_type,
-            typename  details::function_traits<typename details::get<0, Callables...>::type>::arguments_type,
+            typename mp::function_traits<typename mp::get<mp::length<Callables...>::value-1, Callables...>::type>::return_value_type,
+            typename  mp::function_traits<typename mp::get<0, Callables...>::type>::arguments_type,
             linear_executor<Callables...>,
-                    typename details::get<0, Callables...>::type,
-            typename details::tail<Callables...>::type,
-            typename details::make_index<typename details::tail<Callables...>::type >::type
+                    typename mp::get<0, Callables...>::type,
+            typename mp::tail<Callables...>::type,
+            typename mp::make_index<typename mp::tail<Callables...>::type >::type
             >
     {
     private :
@@ -62,14 +62,14 @@ namespace map_builder
 
 
    private:
-        std::any m_callables[details::length<Callables...>::value];
+        std::any m_callables[mp::length<Callables...>::value];
         friend class details::gen_execute<
-                typename details::function_traits<typename details::get<details::length<Callables...>::value-1, Callables...>::type>::return_value_type,
-                typename  details::function_traits<typename details::get<0, Callables...>::type>::arguments_type,
+                typename mp::function_traits<typename mp::get<mp::length<Callables...>::value-1, Callables...>::type>::return_value_type,
+                typename  mp::function_traits<typename mp::get<0, Callables...>::type>::arguments_type,
                 linear_executor<Callables...>,
-                typename details::get<0, Callables...>::type,
-                typename details::tail<Callables...>::type,
-                typename details::make_index<typename details::tail<Callables...>::type >::type
+                typename mp::get<0, Callables...>::type,
+                typename mp::tail<Callables...>::type,
+                typename mp::make_index<typename mp::tail<Callables...>::type >::type
         >;
         template <typename ...U>
         friend linear_executor<std::remove_reference_t<U>...> make_linear_executor(U&&... args);
