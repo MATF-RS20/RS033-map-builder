@@ -15,13 +15,25 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 add_executable(map_builder
         ui/main_window.ui
+        ui/splash_screen.ui
         src/main_window.cpp
         include/main_window.hpp
         include/linear_executor.hpp
-        include/utils.hpp
+        include/mp/make_index.hpp
         src/main.cpp
         ./resources.qrc
-        )
+        include/mp/pack.hpp
+        include/mp/list.hpp
+        include/mp/function_traits.hpp
+        include/mp/types.hpp
+        include/splash_screen.hpp
+        src/splash_screen.cpp
+        include/init_worker.hpp
+        src/init_worker.cpp
+        include/comunicator.hpp
+        src/comunicator.cpp
+        include/mp/utils.hpp
+        include/mp/algorithm.hpp)
 
 target_include_directories(map_builder PUBLIC ./include)
 set_property(TARGET map_builder PROPERTY CXX_STANDARD 17)
