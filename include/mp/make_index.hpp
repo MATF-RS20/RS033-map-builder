@@ -1,11 +1,11 @@
 #ifndef MAP_MAKER_MAKE_INDEX_HPP
 #define MAP_MAKER_MAKE_INDEX_HPP
 
-#include "type_pack.hpp"
-#include "type_list.hpp"
-#include "types.hpp"
+#include "mp/pack.hpp"
+#include "mp/list.hpp"
+#include "mp/types.hpp"
 
-namespace map_builder::details
+namespace map_builder::mp
 {
    template<typename ...Ts>
     struct make_index;
