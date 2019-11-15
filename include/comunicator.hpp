@@ -3,6 +3,7 @@
 
 #include <tuple>
 #include <type_traits>
+#include <QtCore/QObject>
 #include "mp/list.hpp"
 #include "mp/algorithm.hpp"
 
@@ -11,7 +12,7 @@ namespace map_builder
 
 
     template<typename ...Comunicators>
-    class comunicator
+    class comunicator : public QObject
     {
     public:
         //enable if element exists
@@ -31,7 +32,7 @@ namespace map_builder
         friend
         typename std::enable_if<
                 mp::all_diffrent<mp::list<std::decay_t<U>...>>::type::value,
-                comunicator<std::remove_reference_t<U>...>
+                comunicator<std::remove_reference_t<U>...>*
         >::type
         make_comunicator(U&& ...comunicators);
     };
@@ -39,11 +40,11 @@ namespace map_builder
     template<typename ...U>
     typename std::enable_if<
             mp::all_diffrent<mp::list<std::decay_t<U>...>>::type::value,
-            comunicator<std::remove_reference_t<U>...>
+            comunicator<std::remove_reference_t<U>...>*
     >::type
     make_comunicator(U&& ...comunicators)
     {
-        return comunicator<std::remove_reference_t<U>...>(std::forward<U>(comunicators)...);
+        return new comunicator<std::remove_reference_t<U>...>(std::forward<U>(comunicators)...);
     }
 
 }
