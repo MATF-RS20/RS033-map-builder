@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>.</file>
+<!--        <file>.</file>-->
     </qresource>
     <qresource prefix="/styles">
         <file>style.qss</file>
