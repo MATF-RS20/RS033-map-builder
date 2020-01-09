@@ -44,7 +44,7 @@ namespace map_builder
 
     template <typename ...Callables>
     class linear_executor : public details::gen_execute<
-            typename mp::function_traits<typename mp::get<mp::length<Callables...>::value-1, Callables...>::type>::return_value_type,
+            typename mp::function_traits<typename mp::get<mp::length<Callables...>::type::value-1, Callables...>::type>::return_value_type,
             typename  mp::function_traits<typename mp::get<0, Callables...>::type>::arguments_type,
             linear_executor<Callables...>,
                     typename mp::get<0, Callables...>::type,
@@ -62,9 +62,9 @@ namespace map_builder
 
 
    private:
-        std::any m_callables[mp::length<Callables...>::value];
+        std::any m_callables[mp::length<Callables...>::type::value];
         friend class details::gen_execute<
-                typename mp::function_traits<typename mp::get<mp::length<Callables...>::value-1, Callables...>::type>::return_value_type,
+                typename mp::function_traits<typename mp::get<mp::length<Callables...>::type::value-1, Callables...>::type>::return_value_type,
                 typename  mp::function_traits<typename mp::get<0, Callables...>::type>::arguments_type,
                 linear_executor<Callables...>,
                 typename mp::get<0, Callables...>::type,

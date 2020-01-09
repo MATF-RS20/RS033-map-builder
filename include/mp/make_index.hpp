@@ -20,7 +20,7 @@ namespace map_builder::mp
         using type = typename push_back<
                 typename make_index<Ts...>::type ,
                 int_t<get<
-                        length<typename make_index<Ts...>::type>::value-1,
+                        length<typename make_index<Ts...>::type>::type::value-1,
                         typename make_index<Ts...>::type
                         >::type::value+1>
                 >::type;

@@ -16,11 +16,14 @@ namespace map_builder
     {
     public:
         //enable if element exists
-        template<typename Comunicator>
-        Comunicator get()
+        template<typename Comunicator,
+                typename = typename std::enable_if<mp::find_index<mp::list<Comunicators...>, Comunicator>::type::value != -1, int>::type
+                        >
+        Comunicator& get()
         {
-
+            return std::get<mp::find_index<mp::list<Comunicators...>, Comunicator>::type::value>(m_comunicators);
         }
+
     private:
         template<typename ...U>
         explicit comunicator(U&&... comunicators)
