@@ -57,7 +57,6 @@ QMenuBar
 QMenuBar::item
 {
     background-color: transparent;
-
 }
 
 
@@ -65,7 +64,6 @@ QMenuBar::item:selected
 {
     background-color: transparent;
     border: 1px solid #251507;
-
 }
 
 
@@ -85,7 +83,8 @@ QMenu
     background-color: #251507;
     border: 1px solid #000;
     color: white;
-
+    margin-left: 1px;
+    width: 150px;
 }
 
 
@@ -97,15 +96,16 @@ QMenu::separator
     padding-left: 4px;
     margin-left: 10px;
     margin-right: 5px;
-
 }
 
 
 QMenu::item
 {
-    min-width : 150px;
-    padding: 3px 20px 3px 20px;
-
+    width: 80px;
+    padding: 3px 30px 3px 30px;
+    margin-left: 3px;
+    margin-top: 1px;
+    margin-bottom: 1px;
 }
 
 
@@ -113,16 +113,18 @@ QMenu::item:selected
 {
     background-color: #917a51;
     color: #fff;
-
 }
 
 
 QMenu::item:disabled
 {
     color: #262626;
-
 }
 
+QMenu::icon
+{
+    padding-left: 10px;
+}
 
 /*-----QToolButton-----*/
 QToolButton
@@ -138,14 +140,14 @@ QToolButton
 
 QToolButton::hover
 {
-	background-color: #917a51;
+        background-color: #917a51;
 
 }
 
 
 QToolButton::pressed
 {
-	background-color: #724e22;
+        background-color: #724e22;
 
 }
 
@@ -153,6 +155,40 @@ QToolButton::checked
 {
 	background-color: #724e22;
 
+}
+
+QToolButton::menu-indicator
+{
+        image: none;
+}
+
+/*-----QPushButton-----*/
+QPushButton
+{
+        background-color: #323232;
+        border: 1px solid #111111;
+        border-radius: 5px;
+        margin-left: 4px;
+        padding: 5px;
+}
+
+QPushButton::hover
+{
+        background-color: #917a51;
+        border: 1px solid black;
+        border-radius: 3px;
+}
+
+
+QPushButton::pressed
+{
+        background-color: #724e22;
+}
+
+
+QPushButton::checked
+{
+        background-color: #724e22;
 }
 
 

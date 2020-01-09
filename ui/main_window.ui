@@ -28,29 +28,50 @@
            </size>
           </property>
           <property name="text">
-           <string>Terrain_text</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="bt_terrain">
-          <property name="text">
            <string>Terrain</string>
           </property>
          </widget>
         </item>
         <item>
-         <spacer name="vertical_spacer">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
+         <widget class="QToolButton" name="tool_btn_terrain">
+          <property name="minimumSize">
            <size>
-            <width>20</width>
-            <height>40</height>
+            <width>64</width>
+            <height>32</height>
            </size>
           </property>
-         </spacer>
+          <property name="maximumSize">
+           <size>
+            <width>500</width>
+            <height>500</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources.qrc">
+            <normaloff>:/icons/images/icons/terrain_invert.png</normaloff>:/icons/images/icons/terrain_invert.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>64</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="popupMode">
+           <enum>QToolButton::InstantPopup</enum>
+          </property>
+          <property name="toolButtonStyle">
+           <enum>Qt::ToolButtonIconOnly</enum>
+          </property>
+          <property name="autoRaise">
+           <bool>true</bool>
+          </property>
+          <property name="arrowType">
+           <enum>Qt::NoArrow</enum>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QLabel" name="lb_objects_text">
@@ -67,12 +88,18 @@
            </size>
           </property>
           <property name="text">
-           <string>Objects_text</string>
+           <string>Objects</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QScrollArea" name="scr_objects">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>1</verstretch>
+           </sizepolicy>
+          </property>
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
           </property>
@@ -94,23 +121,92 @@
              <x>0</x>
              <y>0</y>
              <width>98</width>
-             <height>153</height>
+             <height>302</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout">
             <item>
-             <widget class="QPushButton" name="btn_nature">
+             <widget class="QToolButton" name="toolButton_2">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>64</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>500</width>
+                <height>500</height>
+               </size>
+              </property>
               <property name="text">
-               <string>Nature</string>
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources.qrc">
+                <normaloff>:/icons/images/icons/land.png</normaloff>:/icons/images/icons/land.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>32</width>
+                <height>16</height>
+               </size>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_walls">
+             <widget class="QToolButton" name="toolButton_3">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>64</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>500</width>
+                <height>500</height>
+               </size>
+              </property>
               <property name="text">
-               <string>Walls</string>
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources.qrc">
+                <normaloff>:/icons/images/icons/land.png</normaloff>:/icons/images/icons/land.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>32</width>
+                <height>16</height>
+               </size>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
             </item>
            </layout>
           </widget>
@@ -141,7 +237,17 @@
            </size>
           </property>
           <property name="text">
-           <string>&lt;=</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources.qrc">
+            <normaloff>:/icons/images/icons/undo_invert.png</normaloff>:/icons/images/icons/undo_invert.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>16</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -160,7 +266,17 @@
            </size>
           </property>
           <property name="text">
-           <string>=&gt;</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources.qrc">
+            <normaloff>:/icons/images/icons/redo_invert.png</normaloff>:/icons/images/icons/redo_invert.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>16</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -179,7 +295,17 @@
            </size>
           </property>
           <property name="text">
-           <string>&gt;</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources.qrc">
+            <normaloff>:/icons/images/icons/preview_invert.png</normaloff>:/icons/images/icons/preview_invert.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>16</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -198,7 +324,17 @@
            </size>
           </property>
           <property name="text">
-           <string>+</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources.qrc">
+            <normaloff>:/icons/images/icons/zoom_in_invert.png</normaloff>:/icons/images/icons/zoom_in_invert.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>16</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -217,7 +353,17 @@
            </size>
           </property>
           <property name="text">
-           <string>-</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources.qrc">
+            <normaloff>:/icons/images/icons/zoom_out_invert.png</normaloff>:/icons/images/icons/zoom_out_invert.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>16</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -249,7 +395,17 @@
            </size>
           </property>
           <property name="text">
-           <string>RL</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources.qrc">
+            <normaloff>:/icons/images/icons/rotate_left_invert.png</normaloff>:/icons/images/icons/rotate_left_invert.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>16</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -268,7 +424,17 @@
            </size>
           </property>
           <property name="text">
-           <string>RR</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources.qrc">
+            <normaloff>:/icons/images/icons/rotate_right_invert.png</normaloff>:/icons/images/icons/rotate_right_invert.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>16</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -287,7 +453,17 @@
            </size>
           </property>
           <property name="text">
-           <string>Select</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources.qrc">
+            <normaloff>:/icons/images/icons/select_arrow_invert.png</normaloff>:/icons/images/icons/select_arrow_invert.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>16</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -430,6 +606,8 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -1,11 +1,35 @@
 <RCC>
-    <qresource prefix="/">
-<!--        <file>.</file>-->
-    </qresource>
+    <qresource prefix="/"/>
     <qresource prefix="/styles">
         <file>style.qss</file>
         <file>style1.qss</file>
         <file>style2.qss</file>
         <file>style3.qss</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file>images/icons/terrain.png</file>
+        <file>images/icons/terrain_invert.png</file>
+        <file>images/icons/preview_invert.png</file>
+        <file>images/icons/preview.png</file>
+        <file>images/icons/redo_invert.png</file>
+        <file>images/icons/redo.png</file>
+        <file>images/icons/rotate_left_invert.png</file>
+        <file>images/icons/rotate_left.png</file>
+        <file>images/icons/rotate_right_invert.png</file>
+        <file>images/icons/rotate_right.png</file>
+        <file>images/icons/select_arrow_invert.png</file>
+        <file>images/icons/select_arrow.png</file>
+        <file>images/icons/undo_invert.png</file>
+        <file>images/icons/undo.png</file>
+        <file>images/icons/zoom_in_invert.png</file>
+        <file>images/icons/zoom_in.png</file>
+        <file>images/icons/zoom_out_invert.png</file>
+        <file>images/icons/zoom_out.png</file>
+        <file>images/icons/land_inverted.png</file>
+        <file>images/icons/land.png</file>
+        <file>images/icons/water-inverted.png</file>
+        <file>images/icons/water.png</file>
+        <file>images/icons/land_2.png</file>
+        <file>images/icons/land_inverted_2.png</file>
     </qresource>
 </RCC>
