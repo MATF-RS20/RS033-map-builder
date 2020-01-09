@@ -37,6 +37,8 @@ add_executable(map_builder
         src/comunication/splash_screen_comunicatior.cpp
         include/comunication/main_window_communication.hpp
         src/comunication/main_window_communication.cpp
+        include/pop_up_menu.hpp
+        src/pop_up_menu.cpp
         )
 
 target_include_directories(map_builder PUBLIC ./include)
