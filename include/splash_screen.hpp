@@ -18,6 +18,7 @@ namespace map_builder
         explicit splash_screen(QWidget *parent= nullptr);
         ~splash_screen() override;
 
+        int progress();
     public slots:
         void progressChanged(int progress);
 

@@ -21,4 +21,9 @@ namespace map_builder
     {
         ui->pb_loading->setValue(progress);
     }
+
+    int splash_screen::progress()
+    {
+        ui->pb_loading->value();
+    }
 }
