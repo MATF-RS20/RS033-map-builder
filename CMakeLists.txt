@@ -31,9 +31,13 @@ add_executable(map_builder
         include/init_worker.hpp
         src/init_worker.cpp
         include/comunicator.hpp
-        src/comunicator.cpp
         include/mp/utils.hpp
-        include/mp/algorithm.hpp)
+        include/mp/algorithm.hpp
+        include/comunication/splash_screen_comunicatior.hpp
+        src/comunication/splash_screen_comunicatior.cpp
+        include/comunication/main_window_communication.hpp
+        src/comunication/main_window_communication.cpp
+        )
 
 target_include_directories(map_builder PUBLIC ./include)
 set_property(TARGET map_builder PROPERTY CXX_STANDARD 17)
