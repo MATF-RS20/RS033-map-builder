@@ -355,6 +355,11 @@ QScrollArea:hover
     border-radius: 3px;
 }
 
+QScrollArea#scr_objects
+{
+    border: none;
+}
+
 /*-----QScrollBar-----*/
 QScrollBar:horizontal
 {
