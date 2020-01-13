@@ -8,7 +8,7 @@
 #include "main_window.hpp"
 #include "linear_executor.hpp"
 #include "comunication/splash_screen_comunicatior.hpp"
-#include "comunication/main_window_communication.hpp"
+#include "comunication/options_comunicaton.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -17,7 +17,8 @@ int main(int argc, char *argv[])
 
     auto * communication = map_builder::make_comunicator(
             std::make_unique<map_builder::splash_screen_communication>(),
-            std::make_unique<map_builder::main_window_communication>()
+//            std::make_unique<map_builder::main_window_communication>()
+              std::make_unique<map_builder::options_communication>()
     );
 
 
