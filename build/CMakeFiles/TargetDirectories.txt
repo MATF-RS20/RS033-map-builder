@@ -1,0 +1,4 @@
+/home/basilisk/Desktop/projekti/rs/map_builder/build/CMakeFiles/rebuild_cache.dir
+/home/basilisk/Desktop/projekti/rs/map_builder/build/CMakeFiles/map_builder.dir
+/home/basilisk/Desktop/projekti/rs/map_builder/build/CMakeFiles/edit_cache.dir
+/home/basilisk/Desktop/projekti/rs/map_builder/build/CMakeFiles/map_builder_autogen.dir

@@ -1,0 +1,25 @@
+WELCOME TO THE MAP_BUILDER NIGHTSCREAM v1.0
+
+It is the 2D map builder designed for making Dungeons&Dragon terrains and maps.
+Blah blah blah...
+...
+...
+
+
+...
+...
+
++ 
++
++
++ 
+
+some numbers...
+
+Best of luck and a lot of fun using it.
+
+Any bug report to atfoc studios: atfoc@gmail.com
+
+Author copyrights C:
+Trifunov Pedja
+Sokolov Luka
