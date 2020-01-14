@@ -34,4 +34,7 @@
     <qresource prefix="/images">
         <file>images/preview.jpg</file>
     </qresource>
+    <qresource prefix="/manual">
+        <file>manual.txt</file>
+    </qresource>
 </RCC>

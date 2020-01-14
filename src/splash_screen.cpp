@@ -1,6 +1,7 @@
 #include <splash_screen.hpp>
-#include "ui_splash_screen.h"
 #include <QFile>
+#include "ui_splash_screen.h"
+#include "utils/set_style.hpp"
 
 namespace map_builder
 {
@@ -11,11 +12,7 @@ namespace map_builder
         ui->setupUi(this);
         setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
 
-        // TODO: Make and comment function for reading and loading qss style.
-        QFile qss(":/styles/style.qss");
-        qss.open(QFile::ReadOnly);
-        QString styleSheet = QLatin1String(qss.readAll());
-        setStyleSheet(styleSheet);
+        set_style_to_widget(this);
 
     }
 

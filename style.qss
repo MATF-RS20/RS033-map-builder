@@ -505,3 +505,11 @@ QProgressBar::chunk:horizontal
     background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 0.5, stop: 0.1 #3c3737, stop: 1 #ffbf00);
     border-radius: 50px;
 }
+
+
+/*-----QTextEdit-----*/
+QTextEdit
+{
+    color: #ffbf00;
+    background-color: #3c3737;
+}

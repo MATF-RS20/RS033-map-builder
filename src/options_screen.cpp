@@ -1,4 +1,6 @@
 #include <memory>
+#include <QTextEdit>
+#include <QWidget>
 #include <QFile>
 #include <QFileDialog>
 #include <QDesktopServices>
@@ -9,6 +11,7 @@
 #include "comunicator.hpp"
 #include "comunication/main_window_communication.hpp"
 #include "comunication/splash_screen_comunicatior.hpp"
+#include "utils/set_style.hpp"
 
 namespace map_builder
 {
@@ -20,11 +23,7 @@ options_screen::options_screen(QWidget *parent) :
     ui->setupUi(this);
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
 
-    // TODO: Make and comment function for reading and loading qss style.
-    QFile qss(":/styles/style.qss");
-    qss.open(QFile::ReadOnly);
-    QString styleSheet = QLatin1String(qss.readAll());
-    setStyleSheet(styleSheet);
+    set_style_to_widget(this);
 
     // Buttons for initialization options:
     connect(ui->btn_new, SIGNAL (released()), this, SLOT (create_new_project()));
@@ -77,7 +76,18 @@ void options_screen::load_project()
 // Function that opens manual of application.
 void options_screen::open_manual()
 {
-    QDesktopServices::openUrl(QUrl::fromLocalFile(qApp->applicationDirPath() + "/manual.txt"));
+    QFile manual(":/manual/manual.txt");
+    if (manual.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        QString text(manual.readAll());
+        QTextEdit *edit(new QTextEdit);
+
+        set_style_to_widget(edit);
+        edit->setText(text);
+        edit->setReadOnly(true);
+        edit->showMaximized();
+        manual.close();
+    }
 }
 
 // Function for exiting the application.

@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QMenu>
 #include <QAction>
+#include "utils/set_style.hpp"
 
 namespace map_builder {
     main_window::main_window(QWidget *parent)
@@ -13,12 +14,7 @@ namespace map_builder {
     {
         ui->setupUi(this);
 
-
-        // TODO: Make and comment function for reading and loading qss style.
-        QFile qss(":/styles/style.qss");
-        qss.open(QFile::ReadOnly);
-        QString styleSheet = QLatin1String(qss.readAll());
-        setStyleSheet(styleSheet);
+        set_style_to_widget(this);
 
         // TODO: Make and comment function that makes menu bar/expandable button for assets.
         pop_up_menu *terrain_menu = new pop_up_menu(ui->tool_btn_terrain, this);
