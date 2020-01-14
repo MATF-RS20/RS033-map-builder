@@ -43,6 +43,8 @@ add_executable(map_builder
         src/comunication/options_comunicator.cpp
         include/comunication/communication_config.hpp
         include/utils/start_task.hpp
+        include/options_screen.hpp
+        src/options_screen.cpp
         )
 
 target_include_directories(map_builder PUBLIC ./include)

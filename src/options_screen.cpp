@@ -1,8 +1,17 @@
-#include "options_screen.hpp"
-#include "ui_options_screen.h"
+#include <memory>
 #include <QFile>
 #include <QFileDialog>
 #include <QDesktopServices>
+#include "ui_options_screen.h"
+#include "options_screen.hpp"
+#include "init_worker.hpp"
+#include "utils/start_task.hpp"
+#include "comunicator.hpp"
+#include "comunication/main_window_communication.hpp"
+#include "comunication/splash_screen_comunicatior.hpp"
+
+namespace map_builder
+{
 
 options_screen::options_screen(QWidget *parent) :
     QMainWindow(parent),
@@ -24,6 +33,7 @@ options_screen::options_screen(QWidget *parent) :
 
 }
 
+
 // Function for creating new project.
 void options_screen::create_new_project()
 {
@@ -32,6 +42,14 @@ void options_screen::create_new_project()
     QString new_project = QFileDialog::getSaveFileName(this, tr("Save project"),
                                                        "/Desktop/untitled.txt", "Images (*.jpg)", 0,
                                                        QFileDialog::DontUseNativeDialog);
+
+
+    utils::start_task<init_worker>(make_comunicator(
+            std::make_unique<splash_screen_communication>(),
+            std::make_unique<main_window_communication>())
+            );
+
+    close_window();
 }
 
 // Function for loading existing project.
@@ -42,6 +60,13 @@ void options_screen::load_project()
     QString project = QFileDialog::getOpenFileName(this, "Select project",
                                                        "/Desktop/untitled.txt", "Images (*.jpg)", 0,
                                                        QFileDialog::DontUseNativeDialog);
+
+    utils::start_task<init_worker>(make_comunicator(
+            std::make_unique<splash_screen_communication>(),
+            std::make_unique<main_window_communication>())
+    );
+
+    close_window();
 }
 
 // Function that opens manual of application.
@@ -59,4 +84,11 @@ void options_screen::exit()
 options_screen::~options_screen()
 {
     delete ui;
+}
+
+    void options_screen::close_window()
+    {
+        hide();
+        deleteLater();
+    }
 }
