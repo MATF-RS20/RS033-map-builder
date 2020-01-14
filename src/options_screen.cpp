@@ -31,6 +31,10 @@ options_screen::options_screen(QWidget *parent) :
     connect(ui->btn_manual, SIGNAL (released()), this, SLOT(open_manual()));
     connect(ui->btn_exit, SIGNAL (released()), this, SLOT(exit()));
 
+    // Adding preview image to label
+    QPixmap pixmap(":/images/images/preview.jpg");
+    ui->lb_img->setPixmap(pixmap);
+
 }
 
 
