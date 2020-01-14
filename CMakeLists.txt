@@ -16,6 +16,7 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 add_executable(map_builder
         ui/main_window.ui
         ui/splash_screen.ui
+        ui/options_screen.ui
         src/main_window.cpp
         include/main_window.hpp
         include/linear_executor.hpp
