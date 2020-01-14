@@ -1,9 +1,7 @@
 <RCC>
     <qresource prefix="/styles">
         <file>style.qss</file>
-        <file>style1.qss</file>
-        <file>style2.qss</file>
-        <file>style3.qss</file>
+        <file>styles/medieval_sharp.ttf</file>
     </qresource>
     <qresource prefix="/icons">
         <file>images/icons/terrain.png</file>
