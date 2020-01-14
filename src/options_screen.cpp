@@ -85,7 +85,8 @@ void options_screen::open_manual()
         set_style_to_widget(edit);
         edit->setText(text);
         edit->setReadOnly(true);
-        edit->showMaximized();
+        edit->setFixedSize(800, 600);
+        edit->show();
         manual.close();
     }
 }
