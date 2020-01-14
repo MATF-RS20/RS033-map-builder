@@ -45,6 +45,8 @@ add_executable(map_builder
         include/utils/start_task.hpp
         include/options_screen.hpp
         src/options_screen.cpp
+        include/utils/set_style.hpp
+        src/utils/set_style.cpp
         )
 
 target_include_directories(map_builder PUBLIC ./include)
