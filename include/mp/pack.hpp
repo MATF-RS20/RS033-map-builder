@@ -3,6 +3,7 @@
 
 #include <cstddef>
 #include "types.hpp"
+#include "list.hpp"
 
 namespace map_builder::mp
 {
