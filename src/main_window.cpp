@@ -15,6 +15,7 @@ namespace map_builder {
         ui->setupUi(this);
 
         set_style_to_widget(this);
+        QWidget::setWindowTitle(QString("Nightscream"));
 
         // TODO: Make and comment function that makes menu bar/expandable button for assets.
         pop_up_menu *terrain_menu = new pop_up_menu(ui->tool_btn_terrain, this);
