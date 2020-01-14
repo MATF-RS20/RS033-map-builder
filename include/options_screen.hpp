@@ -1,7 +1,7 @@
 #ifndef OPTIONS_SCREEN_HPP
 #define OPTIONS_SCREEN_HPP
 
-#include <QMainWindow>
+#include <QDialog>
 
 namespace Ui {
 class options_screen;
@@ -9,12 +9,12 @@ class options_screen;
 
 namespace map_builder
 {
-    class options_screen : public QMainWindow
+    class options_screen : public QDialog
     {
     Q_OBJECT
 
     public:
-        explicit options_screen(QWidget *parent = 0);
+        explicit options_screen(QWidget *parent = nullptr);
         ~options_screen();
 
 // Slots for options in options_screen

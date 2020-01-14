@@ -14,10 +14,11 @@ namespace map_builder
 {
 
 options_screen::options_screen(QWidget *parent) :
-    QMainWindow(parent),
+    QDialog(parent),
     ui(new Ui::options_screen)
 {
     ui->setupUi(this);
+    setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
 
     // TODO: Make and comment function for reading and loading qss style.
     QFile qss(":/styles/style.qss");
