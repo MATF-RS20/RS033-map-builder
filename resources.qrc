@@ -1,5 +1,4 @@
 <RCC>
-    <qresource prefix="/"/>
     <qresource prefix="/styles">
         <file>style.qss</file>
         <file>style1.qss</file>
@@ -31,5 +30,8 @@
         <file>images/icons/water.png</file>
         <file>images/icons/land_2.png</file>
         <file>images/icons/land_inverted_2.png</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file>images/preview.jpg</file>
     </qresource>
 </RCC>

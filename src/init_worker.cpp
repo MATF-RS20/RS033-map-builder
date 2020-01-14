@@ -5,9 +5,9 @@
 #include <memory>
 #include "init_worker.hpp"
 #include "linear_executor.hpp"
-#include "comunication/splash_screen_comunicatior.hpp"
 #include "comunication/communication_config.hpp"
 #include "comunication/main_window_communication.hpp"
+#include "comunication/splash_screen_comunicatior.hpp"
 
 namespace map_builder
 {
@@ -23,7 +23,7 @@ namespace map_builder
                 {
                     QMetaObject::invokeMethod(com->get<std::unique_ptr<splash_screen_communication>>().get(),
                             "make_and_show_splash_screen");
-                    return com;
+                   return com;
                 },
                 [](comunicator_type *com)
                 {
