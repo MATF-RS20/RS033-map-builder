@@ -28,6 +28,15 @@
         <file>images/icons/water.png</file>
         <file>images/icons/land_2.png</file>
         <file>images/icons/land_inverted_2.png</file>
+        <file>images/icons/undo_golden.png</file>
+        <file>images/icons/redo_golden.png</file>
+        <file>images/icons/preview_golden.png</file>
+        <file>images/icons/zoom_in_golden.png</file>
+        <file>images/icons/zoom_out_golden.png</file>
+        <file>images/icons/rotate_left_golden.png</file>
+        <file>images/icons/rotate_right_golden.png</file>
+        <file>images/icons/select_arrow_golden.png</file>
+        <file>images/icons/move.png</file>
     </qresource>
     <qresource prefix="/images">
         <file>images/preview.jpg</file>

@@ -247,7 +247,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/undo_invert.png</normaloff>:/icons/images/icons/undo_invert.png</iconset>
+            <normaloff>:/icons/images/icons/undo_golden.png</normaloff>:/icons/images/icons/undo_golden.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -276,7 +276,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/redo_invert.png</normaloff>:/icons/images/icons/redo_invert.png</iconset>
+            <normaloff>:/icons/images/icons/redo_golden.png</normaloff>:/icons/images/icons/redo_golden.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -305,7 +305,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/preview_invert.png</normaloff>:/icons/images/icons/preview_invert.png</iconset>
+            <normaloff>:/icons/images/icons/preview_golden.png</normaloff>:/icons/images/icons/preview_golden.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -334,7 +334,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/zoom_in_invert.png</normaloff>:/icons/images/icons/zoom_in_invert.png</iconset>
+            <normaloff>:/icons/images/icons/zoom_in_golden.png</normaloff>:/icons/images/icons/zoom_in_golden.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -363,7 +363,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/zoom_out_invert.png</normaloff>:/icons/images/icons/zoom_out_invert.png</iconset>
+            <normaloff>:/icons/images/icons/zoom_out_golden.png</normaloff>:/icons/images/icons/zoom_out_golden.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -405,7 +405,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/rotate_left_invert.png</normaloff>:/icons/images/icons/rotate_left_invert.png</iconset>
+            <normaloff>:/icons/images/icons/rotate_left_golden.png</normaloff>:/icons/images/icons/rotate_left_golden.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -434,7 +434,24 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/rotate_right_invert.png</normaloff>:/icons/images/icons/rotate_right_invert.png</iconset>
+            <normaloff>:/icons/images/icons/rotate_right_golden.png</normaloff>:/icons/images/icons/rotate_right_golden.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>16</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources.qrc">
+            <normaloff>:/icons/images/icons/move.png</normaloff>:/icons/images/icons/move.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -463,7 +480,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/select_arrow_invert.png</normaloff>:/icons/images/icons/select_arrow_invert.png</iconset>
+            <normaloff>:/icons/images/icons/select_arrow_golden.png</normaloff>:/icons/images/icons/select_arrow_golden.png</iconset>
           </property>
           <property name="iconSize">
            <size>
