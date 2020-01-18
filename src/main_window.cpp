@@ -85,8 +85,6 @@ void main_window::save_project()
     dialog.setStyleSheet("style.qss");
 
     // TODO: Implement saving when format is decided.
-
-    close_window();
 }
 
 
