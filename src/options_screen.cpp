@@ -102,9 +102,10 @@ options_screen::~options_screen()
     delete ui;
 }
 
-    void options_screen::close_window()
-    {
-        hide();
-        deleteLater();
-    }
+void options_screen::close_window()
+{
+    hide();
+    deleteLater();
+}
+
 }
