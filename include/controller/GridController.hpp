@@ -28,6 +28,7 @@ namespace map_builder::controller
         void gridResized(QSize size);
         void sceneRectChanged(const QRectF &sceneRect);
         void gridScrolled(int direction, QPoint point);
+        void minimapResized(QSize size);
     };
 }
 
