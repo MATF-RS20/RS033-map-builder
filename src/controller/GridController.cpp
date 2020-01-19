@@ -30,8 +30,10 @@ namespace map_builder::controller
         mMap->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
         auto *eventFilter = new ImportantEventFilter(this);
+        auto *eventFilterForMinimap = new ImportantEventFilter(this);
 
         mMap->viewport()->installEventFilter(eventFilter);
+        mMinimap->viewport()->installEventFilter(eventFilterForMinimap);
 
         QObject::connect(eventFilter, &ImportantEventFilter::dragedEvent, this, &GridController::gridDraged);
         QObject::connect(eventFilter, &ImportantEventFilter::mouseClickedEvent, this, &GridController::gridClicked);
@@ -39,6 +41,8 @@ namespace map_builder::controller
         QObject::connect(eventFilter, &ImportantEventFilter::scrollWheelEvent, this, &GridController::gridScrolled);
         QObject::connect(eventFilter, &ImportantEventFilter::startDragEvent, this, &GridController::startedGridDrag);
         QObject::connect(eventFilter, &ImportantEventFilter::endDragEvent, this, &GridController::endedGridDrag);
+
+        QObject::connect(eventFilterForMinimap, &ImportantEventFilter::resizedEvent, this, &GridController::minimapResized);
 
         if(mStateController)
         {
@@ -49,13 +53,20 @@ namespace map_builder::controller
 
     void GridController::gridDraged(QVector2D dragDirection, Qt::MouseButton button)
     {
-        if(mStateController)
+        if(mStateController && mScene)
         {
             if(button == Qt::MidButton)
             {
-                const QVector2D slowedDownVector = dragDirection / 7;
+                const QVector2D slowedDownVector = dragDirection;
                 mStateController->gridState().moveSceneRect(-slowedDownVector);
             }
+
+            if(mStateController->toolState().currentTool())
+            {
+                mStateController->toolState().currentTool()->draged(mStateController, mScene, dragDirection, button);
+            }
+
+
         }
 
     }
@@ -100,7 +111,7 @@ namespace map_builder::controller
             {
                 if(mStateController->toolState().currentTool())
                 {
-                    mStateController->toolState().currentTool()->endedDrag(point, button);
+                    mStateController->toolState().currentTool()->endedDrag(mStateController, mScene, point, button);
                 }
             }
     }
@@ -111,9 +122,17 @@ namespace map_builder::controller
         {
             if(mStateController->toolState().currentTool())
             {
-                mStateController->toolState().currentTool()->startedDrag(point, button);
+                mStateController->toolState().currentTool()->startedDrag(mStateController, mScene, point, button);
             }
         }
+    }
+
+    void GridController::minimapResized(QSize size)
+    {
+        QSizeF sizeF(size);
+        constexpr int distance = state::GridState::distanceBetweenCells;
+        sizeF.scale(mStateController->gridState().width()*distance, mStateController->gridState().height()*distance, Qt::KeepAspectRatioByExpanding);
+        details::updateSceneRect(mMinimap, QRectF(QPointF(0,0), sizeF));
     }
 
     namespace details

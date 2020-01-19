@@ -86,6 +86,14 @@ add_executable(map_builder
         include/GeneralAssetPaintBuilder.hpp
         src/GeneralAssetConfigurator.cpp
         src/GeneralAssetPaintBuilder.cpp
+        include/Action.hpp
+        src/Action.cpp
+        include/controller/ActionAndToolController.hpp
+        src/controller/ActionAndToolController.cpp
+        src/MoveTool.cpp
+        include/MoveTool.hpp
+        include/ZoomInAction.hpp
+        src/ZoomInAction.cpp
         )
 
 target_include_directories(map_builder PUBLIC ./include)

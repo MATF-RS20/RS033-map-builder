@@ -29,6 +29,7 @@
 #include "assetCategoryButton.hpp"
 #include "assetCategoryItem.hpp"
 #include "categoryAsset.hpp"
+#include "controller/ActionAndToolController.hpp"
 
 namespace map_builder
 {
@@ -49,6 +50,7 @@ main_window::main_window(QWidget *parent)
     m_grid_controller = new controller::GridController(ui->graphics_view_grid, ui->graphics_view_minimap,
                                                        m_state_controller, this);
 
+    mActionAndToolController = new controller::ActionAndToolController(m_state_controller, ui->graphics_view_grid->scene(), ui->verticalLayout_2, this);
 
     set_style_to_widget(this);
 
@@ -136,6 +138,9 @@ main_window::main_window(QWidget *parent)
     connect(ui->ac_save_file, &QAction::triggered, this, &main_window::save_project);
     connect(ui->ac_save_file_as, &QAction::triggered, this, &main_window::save_as_project);
     connect(ui->ac_exit, &QAction::triggered, this, &main_window::exit_project);
+
+    connect(ui->pushButton, &QPushButton::clicked, mActionAndToolController, &controller::ActionAndToolController::moveToolClicked);
+    connect(ui->btn_zoom_in, &QPushButton::clicked, mActionAndToolController, &controller::ActionAndToolController::zoomInActionClicked);
 }
 
 //    void main_window::activatedTerrain()

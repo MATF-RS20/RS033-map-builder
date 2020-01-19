@@ -2,6 +2,7 @@
 #include <QtCore/QPoint>
 #include <controller/StateController.hpp>
 #include <Asset.hpp>
+#include <QVector2D>
 #include "PaintTool.hpp"
 #include "utils/util.hpp"
 #include <QDebug>
@@ -24,17 +25,20 @@ namespace map_builder
             return nullptr;
         }
     }
-    void PaintTool::startedDrag(QPoint point, Qt::MouseButton button)
+    void PaintTool::startedDrag(controller::StateController *stateController, QGraphicsScene *scene, QPoint point,
+                                Qt::MouseButton button)
     {
 
     }
 
-    void PaintTool::draged()
+    void PaintTool::draged(controller::StateController *stateController, QGraphicsScene *scene, QVector2D dragedDirection,
+                           Qt::MouseButtons button)
     {
 
     }
 
-    void PaintTool::endedDrag(QPoint point, Qt::MouseButton button)
+    void PaintTool::endedDrag(controller::StateController *stateController, QGraphicsScene *scene, QPoint point,
+                              Qt::MouseButton button)
     {
 
     }
