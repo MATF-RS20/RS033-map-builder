@@ -15,6 +15,7 @@
 #include <QLabel>
 #include <QMenu>
 #include <QAction>
+#include <algorithm>
 
 #include <PaintTool.hpp>
 #include <TestAssetPaintBuilder.hpp>
@@ -65,6 +66,9 @@ main_window::main_window(QWidget *parent)
     QDir assetsDir = QCoreApplication::applicationDirPath() + "/assets";
     if (assetsDir.exists()){
         QStringList assetLst = assetsDir.entryList(); // assetLst = {Terrain, Tree, Animals...}
+        std::sort(assetLst.begin(), assetLst.end(), [](QString x1, QString x2){
+            return x1 == "Terrain" ? true : (x1 < x2);
+        });
         for (int i = 0; i < assetLst.size(); i++){
             QString assetName = assetLst.at(i); // assetName = Terrain
             if (assetName == '.' || assetName == ".."){
@@ -129,6 +133,9 @@ main_window::main_window(QWidget *parent)
             } else {
                 qDebug() << "Doesn't exist";
             }
+            std::sort(aci.begin(), aci.end(), [](AssetCategoryItem x1, AssetCategoryItem x2){
+                return x1.name() == "Terrain" ? true : (x1.name() < x2.name());
+            });
             auto* tmp = new AssetCategoryButton(CategoryAsset(assetName, QIcon(assetCategoryDir.path() + "/icon" + assetName + ".png"), aci));
             connect(tmp, &AssetCategoryButton::categoryClicked, this, &main_window::categoryButtonClicked);
             ui->scr_objects_content->layout()->addWidget(tmp);
