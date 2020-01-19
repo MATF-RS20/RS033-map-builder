@@ -34,20 +34,6 @@ namespace map_builder
 {
 
 
-        m_state_controller = new controller::StateController(new state::GridState(10, 10), new state::ToolState,this);
-        m_grid_controller = new controller::GridController(ui->graphics_view_grid, ui->graphics_view_minimap,
-                                                           m_state_controller, this);
-
-
-        set_style_to_widget(this);
-
-        // TODO: Make and comment function that makes menu bar/expandable button for assets.
-        pop_up_menu *terrain_menu = new pop_up_menu(ui->tool_btn_terrain, this);
-        terrain_menu->addAction(QIcon(":/icons/images/icons/land_inverted_2.png"), "Land", this, &main_window::activatedTerrain);
-        terrain_menu->addAction(QIcon(":/icons/images/icons/water-inverted.png"), "Sea", this, &main_window::activatedObject);
-        ui->tool_btn_terrain->setMenu(terrain_menu);
-    }
-
 main_window::main_window(QWidget *parent)
     : QMainWindow(parent),
     ui{new Ui::main_window()}
@@ -56,6 +42,21 @@ main_window::main_window(QWidget *parent)
 
     set_style_to_widget(this);
     QWidget::setWindowTitle(QString("Nightscream"));
+
+
+
+    m_state_controller = new controller::StateController(new state::GridState(10, 10), new state::ToolState,this);
+    m_grid_controller = new controller::GridController(ui->graphics_view_grid, ui->graphics_view_minimap,
+                                                       m_state_controller, this);
+
+
+    set_style_to_widget(this);
+
+    // TODO: Make and comment function that makes menu bar/expandable button for assets.
+    pop_up_menu *terrain_menu = new pop_up_menu(ui->tool_btn_terrain, this);
+    terrain_menu->addAction(QIcon(":/icons/images/icons/land_inverted_2.png"), "Land", this, &main_window::activatedTerrain);
+    terrain_menu->addAction(QIcon(":/icons/images/icons/water-inverted.png"), "Sea", this, &main_window::activatedObject);
+    ui->tool_btn_terrain->setMenu(terrain_menu);
 
     /* ====================================== */
     // Adding assets from folder.
@@ -102,6 +103,21 @@ main_window::main_window(QWidget *parent)
     }
 
 
+
+
+// Spacer to push the buttons upside.
+    ui->scr_objects_content->layout()->addItem(new QSpacerItem(0, 10, QSizePolicy::Expanding, QSizePolicy::Expanding));
+    /* ============= ============== =========== */
+
+
+    // Functions for actions in menu_bar.
+    connect(ui->ac_new_file, &QAction::triggered, this, &main_window::create_new_project);
+    connect(ui->ac_open_file, &QAction::triggered, this, &main_window::open_project);
+    connect(ui->ac_save_file, &QAction::triggered, this, &main_window::save_project);
+    connect(ui->ac_save_file_as, &QAction::triggered, this, &main_window::save_as_project);
+    connect(ui->ac_exit, &QAction::triggered, this, &main_window::exit_project);
+}
+
     void main_window::activatedTerrain()
     {
         auto testAssetBuilder = new TestAssetPaintBuilder(AssetPaintType::terrain, this);
@@ -119,19 +135,6 @@ main_window::main_window(QWidget *parent)
         m_state_controller->toolState().currentTool(paintTool);
 
     }
-
-// Spacer to push the buttons upside.
-    ui->scr_objects_content->layout()->addItem(new QSpacerItem(0, 10, QSizePolicy::Expanding, QSizePolicy::Expanding));
-    /* ============= ============== =========== */
-
-
-    // Functions for actions in menu_bar.
-    connect(ui->ac_new_file, &QAction::triggered, this, &main_window::create_new_project);
-    connect(ui->ac_open_file, &QAction::triggered, this, &main_window::open_project);
-    connect(ui->ac_save_file, &QAction::triggered, this, &main_window::save_project);
-    connect(ui->ac_save_file_as, &QAction::triggered, this, &main_window::save_as_project);
-    connect(ui->ac_exit, &QAction::triggered, this, &main_window::exit_project);
-}
 
 // Function for creating new project.
 void main_window::create_new_project()

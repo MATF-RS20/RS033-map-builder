@@ -65,8 +65,12 @@ namespace map_builder::controller
         if(mStateController && mScene)
         {
             qDebug() << point;
-            mStateController->toolState().currentTool().clicked(mStateController, mScene, mMap->mapToScene(point),
-                                                                button);
+
+            if(mStateController->toolState().currentTool())
+            {
+                mStateController->toolState().currentTool()->clicked(mStateController, mScene, mMap->mapToScene(point),
+                                                                    button);
+            }
         }
     }
 
@@ -92,17 +96,23 @@ namespace map_builder::controller
     void GridController::endedGridDrag(QPoint point, Qt::MouseButton button)
     {
 
-        if(mStateController && mScene)
-        {
-            mStateController->toolState().currentTool().endedDrag(point, button);
-        }
+            if(mStateController && mScene)
+            {
+                if(mStateController->toolState().currentTool())
+                {
+                    mStateController->toolState().currentTool()->endedDrag(point, button);
+                }
+            }
     }
 
     void GridController::startedGridDrag(QPoint point, Qt::MouseButton button)
     {
         if(mStateController && mScene)
         {
-            mStateController->toolState().currentTool().startedDrag(point, button);
+            if(mStateController->toolState().currentTool())
+            {
+                mStateController->toolState().currentTool()->startedDrag(point, button);
+            }
         }
     }
 

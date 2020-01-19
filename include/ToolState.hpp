@@ -12,9 +12,9 @@ namespace map_builder::state
     public:
         explicit ToolState(QObject *parent = nullptr);
 
-        inline Tool& currentTool()
+        inline Tool *currentTool()
         {
-            return *mCurrentTool;
+            return mCurrentTool;
         }
 
         void currentTool(Tool *tool);
