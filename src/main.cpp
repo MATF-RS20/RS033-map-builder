@@ -9,8 +9,11 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
 
-    map_builder::options_screen *screen{new map_builder::options_screen};
-    screen->show();
+    map_builder::main_window window;
+
+    window.show();
+//    map_builder::options_screen *screen{new map_builder::options_screen};
+//    screen->show();
 
 
     return QApplication::exec();
