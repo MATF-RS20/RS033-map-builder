@@ -61,30 +61,49 @@ main_window::main_window(QWidget *parent)
     ui->scr_objects_content->layout()->addWidget(new QLabel("Assets"));
 
 
+    // assetsDir = .../assets/
     QDir assetsDir = QCoreApplication::applicationDirPath() + "/assets";
     if (assetsDir.exists()){
-        QStringList assetLst = assetsDir.entryList();
+        QStringList assetLst = assetsDir.entryList(); // assetLst = {Terrain, Tree, Animals...}
         for (int i = 0; i < assetLst.size(); i++){
-            QString assetName = assetLst.at(i);
+            QString assetName = assetLst.at(i); // assetName = Terrain
             if (assetName == '.' || assetName == ".."){
                 continue;
             }
             qDebug() << assetName;
-
+            // assetCategoryDir = .../assets/Terrain/
             QDir assetCategoryDir = QCoreApplication::applicationDirPath() + "/assets/" + assetName;
             std::vector<AssetCategoryItem> aci;
+            QVector<QPair<QString, QPixmap>> painterVariants;
             if (assetCategoryDir.exists()){
-                QStringList assetCategoryLst = assetCategoryDir.entryList();
+                QStringList assetCategoryLst = assetCategoryDir.entryList(); // assetCategoryLst = {Land, Sea, iconTerrain}
                 for (int i = 0; i < assetCategoryLst.size(); i++){
-                    QString assetCategoryName = assetCategoryLst.at(i);
-                    QPair<QString, QPixmap> pair = QPair<QString, QPixmap>(assetCategoryName, QPixmap(QCoreApplication::applicationDirPath() + "/assets/" + assetName + "/" + assetCategoryName + ".png"));
-
-                    QVector<QPair<QString, QPixmap>> painterVariants;
-                    painterVariants.push_back(pair);
-                    GeneralAssetPaintBuilder *painter = new GeneralAssetPaintBuilder(painterVariants, AssetPaintType::object, this);
+                    QString assetCategoryName = assetCategoryLst.at(i); // assetCategoryName = Land
                     if (assetCategoryName == '.' || assetCategoryName == ".."){
                         continue;
                     }
+
+                    // For each asset category name take all of its pngs.
+                    // assetCategoryPaintersDir = .../assets/Terrain/Land
+                    QDir assetCategoryPaintersDir = QCoreApplication::applicationDirPath() + "/assets/" + assetName + "/" + assetCategoryName;
+                    if (assetCategoryPaintersDir.exists()) {
+                        QStringList assetCategoryVariantLst = assetCategoryPaintersDir.entryList(); // assetCategoryVariantLst = {g_d.png, g_l.png, g_s.png, icon.png}
+                        for (int i = 0; i < assetCategoryVariantLst.size(); i++){
+                            QString assetCategoryVariantName = assetCategoryVariantLst.at(i);
+                            if (assetCategoryVariantName == '.' || assetCategoryVariantName == ".."){
+                                continue;
+                            }
+                            QPair<QString, QPixmap> pair = QPair<QString, QPixmap>(assetCategoryVariantName, QPixmap(QCoreApplication::applicationDirPath() + "/assets/" + assetName + "/" + assetCategoryName + "/" + assetCategoryVariantName));
+                            painterVariants.push_back(pair);
+
+                        }
+                    } else {
+                        qDebug() << QCoreApplication::applicationDirPath() + "/assets/" + assetName + "/" + assetCategoryName + "doesn't exist";
+                    }
+
+
+                    qDebug() << QCoreApplication::applicationDirPath() + "/assets/" + assetName + "/" + assetCategoryName + ".png";
+                    GeneralAssetPaintBuilder *painter = new GeneralAssetPaintBuilder(painterVariants, AssetPaintType::object, this);
 
                     //qDebug() << assetCategoryName;
                     QDir assetCategoryItemDir = QCoreApplication::applicationDirPath() + "/assets/" + assetName + "/" + assetCategoryName;
@@ -141,7 +160,6 @@ main_window::main_window(QWidget *parent)
 void main_window::categoryButtonClicked(AssetPaintBuilder* painter)
 {
     m_state_controller->toolState().currentTool(new PaintTool(painter, ui->verticalLayout_2));
-    qDebug() << "Hi from main_window";
 }
 
 // Function for creating new project.
