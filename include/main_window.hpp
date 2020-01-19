@@ -22,8 +22,6 @@ namespace map_builder {
 
 
     public slots:
-//        void activatedTerrain();
-//        void activatedObject();
 
 
     private:

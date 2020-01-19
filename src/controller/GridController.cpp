@@ -3,6 +3,7 @@
 #include <utils/ImportantEventFilter.hpp>
 #include "controller/GridController.hpp"
 #include <QVector2D>
+#include <QGraphicsLineItem>
 
 namespace map_builder::controller
 {
@@ -124,14 +125,14 @@ namespace map_builder::controller
             QLineF originalLine(0, 0, 0, h*step);
             for(int i = 0; i <= w; ++i)
             {
-                scene->addLine(originalLine);
+                scene->addLine(originalLine)->setZValue(3);
                 originalLine.translate(step, 0);
             }
 
             originalLine = QLineF(0, 0, w*step, 0);
             for(int i = 0; i <= h; ++i)
             {
-                scene->addLine(originalLine);
+                scene->addLine(originalLine)->setZValue(3);
                 originalLine.translate(0, step);
             }
         }

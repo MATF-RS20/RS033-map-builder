@@ -71,7 +71,7 @@ namespace map_builder
 
     {
 
-        setFlags(QGraphicsItem::ItemIsMovable);
+    //  setFlags(QGraphicsItem::ItemIsMovable);
         setX(x);
         setY(y);
     }

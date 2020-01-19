@@ -15,7 +15,7 @@ namespace map_builder::state
 
     public:
 
-        static constexpr int distanceBetweenCells = 15;
+        static constexpr int distanceBetweenCells = 150;
         static constexpr float zoom_out_factor{1.01};
         static constexpr float zoom_in_factor{1/zoom_out_factor};
 
