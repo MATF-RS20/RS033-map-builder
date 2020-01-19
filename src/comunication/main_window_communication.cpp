@@ -11,7 +11,8 @@ namespace map_builder
         if(m_main_window == nullptr)
         {
             m_main_window = new main_window();
-            m_main_window->show();
+            m_main_window->setWindowIcon(QIcon());
+            m_main_window->showMaximized();
         }
     }
 }

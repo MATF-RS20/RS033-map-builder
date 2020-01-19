@@ -26,10 +26,10 @@ options_screen::options_screen(QWidget *parent) :
     set_style_to_widget(this);
 
     // Buttons for initialization options:
-    connect(ui->btn_new, SIGNAL (released()), this, SLOT (create_new_project()));
-    connect(ui->btn_load, SIGNAL (released()), this, SLOT (load_project()));
-    connect(ui->btn_manual, SIGNAL (released()), this, SLOT(open_manual()));
-    connect(ui->btn_exit, SIGNAL (released()), this, SLOT(exit()));
+    connect(ui->btn_new, &QPushButton::released, this, &options_screen::create_new_project);
+    connect(ui->btn_load, &QPushButton::released, this,  &options_screen::load_project);
+    connect(ui->btn_manual, &QPushButton::released, this,  &options_screen::open_manual);
+    connect(ui->btn_exit, &QPushButton::released, this,  &options_screen::exit);
 
     // Adding preview image to label
     QPixmap pixmap(":/images/images/preview.jpg");
@@ -102,9 +102,10 @@ options_screen::~options_screen()
     delete ui;
 }
 
-    void options_screen::close_window()
-    {
-        hide();
-        deleteLater();
-    }
+void options_screen::close_window()
+{
+    hide();
+    deleteLater();
+}
+
 }

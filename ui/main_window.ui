@@ -13,10 +13,17 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="iconSize">
+   <size>
+    <width>22</width>
+    <height>22</height>
+   </size>
+  </property>
   <widget class="QWidget" name="layout_cw">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0" colspan="2">
      <layout class="QGridLayout" name="layout_main_grid">
+
       <item row="1" column="0">
        <layout class="QVBoxLayout" name="layout_asset_builder">
         <item>
@@ -241,7 +248,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/undo_invert.png</normaloff>:/icons/images/icons/undo_invert.png</iconset>
+            <normaloff>:/icons/images/icons/undo_golden.png</normaloff>:/icons/images/icons/undo_golden.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -270,7 +277,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/redo_invert.png</normaloff>:/icons/images/icons/redo_invert.png</iconset>
+            <normaloff>:/icons/images/icons/redo_golden.png</normaloff>:/icons/images/icons/redo_golden.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -299,7 +306,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/preview_invert.png</normaloff>:/icons/images/icons/preview_invert.png</iconset>
+            <normaloff>:/icons/images/icons/preview_golden.png</normaloff>:/icons/images/icons/preview_golden.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -328,7 +335,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/zoom_in_invert.png</normaloff>:/icons/images/icons/zoom_in_invert.png</iconset>
+            <normaloff>:/icons/images/icons/zoom_in_golden.png</normaloff>:/icons/images/icons/zoom_in_golden.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -357,7 +364,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/zoom_out_invert.png</normaloff>:/icons/images/icons/zoom_out_invert.png</iconset>
+            <normaloff>:/icons/images/icons/zoom_out_golden.png</normaloff>:/icons/images/icons/zoom_out_golden.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -399,7 +406,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/rotate_left_invert.png</normaloff>:/icons/images/icons/rotate_left_invert.png</iconset>
+            <normaloff>:/icons/images/icons/rotate_left_golden.png</normaloff>:/icons/images/icons/rotate_left_golden.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -428,7 +435,24 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/rotate_right_invert.png</normaloff>:/icons/images/icons/rotate_right_invert.png</iconset>
+            <normaloff>:/icons/images/icons/rotate_right_golden.png</normaloff>:/icons/images/icons/rotate_right_golden.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>16</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources.qrc">
+            <normaloff>:/icons/images/icons/move.png</normaloff>:/icons/images/icons/move.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -457,7 +481,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/select_arrow_invert.png</normaloff>:/icons/images/icons/select_arrow_invert.png</iconset>
+            <normaloff>:/icons/images/icons/select_arrow_golden.png</normaloff>:/icons/images/icons/select_arrow_golden.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -577,6 +601,46 @@
         </layout>
        </widget>
       </item>
+      <item row="1" column="0">
+       <layout class="QVBoxLayout" name="layout_asset_builder">
+        <item>
+         <widget class="QScrollArea" name="scr_objects">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>1</horstretch>
+            <verstretch>1</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="lineWidth">
+           <number>0</number>
+          </property>
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarAsNeeded</enum>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scr_objects_content">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>82</width>
+             <height>395</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout"/>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </item>
      </layout>
     </item>
    </layout>
@@ -594,14 +658,15 @@
     <property name="title">
      <string>&amp;File</string>
     </property>
-   </widget>
-   <widget class="QMenu" name="menu_edit">
-    <property name="title">
-     <string>&amp;Edit</string>
-    </property>
+    <addaction name="ac_new_file"/>
+    <addaction name="separator"/>
+    <addaction name="ac_open_file"/>
+    <addaction name="ac_save_file"/>
+    <addaction name="ac_save_file_as"/>
+    <addaction name="separator"/>
+    <addaction name="ac_exit"/>
    </widget>
    <addaction name="menu_file"/>
-   <addaction name="menu_edit"/>
   </widget>
   <widget class="QStatusBar" name="status_bar">
    <property name="font">
@@ -610,6 +675,31 @@
     </font>
    </property>
   </widget>
+  <action name="ac_open_file">
+   <property name="text">
+    <string>&amp;Open</string>
+   </property>
+  </action>
+  <action name="ac_save_file">
+   <property name="text">
+    <string>&amp;Save</string>
+   </property>
+  </action>
+  <action name="ac_new_file">
+   <property name="text">
+    <string>&amp;New</string>
+   </property>
+  </action>
+  <action name="ac_save_file_as">
+   <property name="text">
+    <string>Save &amp;as</string>
+   </property>
+  </action>
+  <action name="ac_exit">
+   <property name="text">
+    <string>&amp;Exit</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="../resources.qrc"/>
