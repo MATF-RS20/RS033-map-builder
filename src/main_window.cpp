@@ -15,6 +15,7 @@
 #include <QLabel>
 #include <QMenu>
 #include <QAction>
+#include <algorithm>
 
 #include <PaintTool.hpp>
 #include <TestAssetPaintBuilder.hpp>
@@ -67,16 +68,19 @@ main_window::main_window(QWidget *parent)
     QDir assetsDir = QCoreApplication::applicationDirPath() + "/assets";
     if (assetsDir.exists()){
         QStringList assetLst = assetsDir.entryList(); // assetLst = {Terrain, Tree, Animals...}
+        std::sort(assetLst.begin(), assetLst.end(), [](QString x1, QString x2){
+            return x1 == "Terrain" ? true : (x1 < x2);
+        });
         for (int i = 0; i < assetLst.size(); i++){
             QString assetName = assetLst.at(i); // assetName = Terrain
             if (assetName == '.' || assetName == ".."){
                 continue;
             }
-            qDebug() << assetName;
+            // qDebug() << assetName;
             // assetCategoryDir = .../assets/Terrain/
             QDir assetCategoryDir = QCoreApplication::applicationDirPath() + "/assets/" + assetName;
             std::vector<AssetCategoryItem> aci;
-            QVector<QPair<QString, QPixmap>> painterVariants;
+
             if (assetCategoryDir.exists()){
                 QStringList assetCategoryLst = assetCategoryDir.entryList(); // assetCategoryLst = {Land, Sea, iconTerrain}
                 for (int i = 0; i < assetCategoryLst.size(); i++){
@@ -84,19 +88,26 @@ main_window::main_window(QWidget *parent)
                     if (assetCategoryName == '.' || assetCategoryName == ".."){
                         continue;
                     }
-
+                    QVector<QPair<QString, QPixmap>> painterVariants;
                     // For each asset category name take all of its pngs.
                     // assetCategoryPaintersDir = .../assets/Terrain/Land
                     QDir assetCategoryPaintersDir = QCoreApplication::applicationDirPath() + "/assets/" + assetName + "/" + assetCategoryName;
                     if (assetCategoryPaintersDir.exists()) {
                         QStringList assetCategoryVariantLst = assetCategoryPaintersDir.entryList(); // assetCategoryVariantLst = {g_d.png, g_l.png, g_s.png, icon.png}
+
                         for (int i = 0; i < assetCategoryVariantLst.size(); i++){
-                            QString assetCategoryVariantName = assetCategoryVariantLst.at(i);
+                            QString assetCategoryVariantName = assetCategoryVariantLst.at(i); // assetCategoryVariantName = g_l.png
                             if (assetCategoryVariantName == '.' || assetCategoryVariantName == ".."){
                                 continue;
                             }
-                            QPair<QString, QPixmap> pair = QPair<QString, QPixmap>(assetCategoryVariantName, QPixmap(QCoreApplication::applicationDirPath() + "/assets/" + assetName + "/" + assetCategoryName + "/" + assetCategoryVariantName));
-                            painterVariants.push_back(pair);
+                            if(!assetCategoryVariantName.startsWith("icon")){
+                                // pair = g_l.png, g_l.png
+                                QString name = assetCategoryVariantName;
+                                name.replace("_", " ");
+                                name.replace(".png", " ");
+                                QPair<QString, QPixmap> pair = QPair<QString, QPixmap>(name, QPixmap(QCoreApplication::applicationDirPath() + "/assets/" + assetName + "/" + assetCategoryName + "/" + assetCategoryVariantName));
+                                painterVariants.push_back(pair);
+                            }
 
                         }
                     } else {
@@ -104,19 +115,29 @@ main_window::main_window(QWidget *parent)
                     }
 
 
-                    qDebug() << QCoreApplication::applicationDirPath() + "/assets/" + assetName + "/" + assetCategoryName + ".png";
-                    GeneralAssetPaintBuilder *painter = new GeneralAssetPaintBuilder(painterVariants, AssetPaintType::object, this);
-
-                    //qDebug() << assetCategoryName;
+                    //qDebug() << QCoreApplication::applicationDirPath() + "/assets/" + assetName + "/" + assetCategoryName + ".png";
+                    // Painter for Terrain
                     QDir assetCategoryItemDir = QCoreApplication::applicationDirPath() + "/assets/" + assetName + "/" + assetCategoryName;
+                    GeneralAssetPaintBuilder *painter;
                     if (assetCategoryItemDir.exists()) {
-                        QIcon assetItemIcon = QIcon(assetCategoryItemDir.path() + "/icon" + assetCategoryName + ".png");
-                        aci.push_back(AssetCategoryItem(assetCategoryName, assetItemIcon, painter /*vec of pairs*/));
+                        if (assetName == "Terrain"){
+                            painter = new GeneralAssetPaintBuilder(painterVariants, AssetPaintType::terrain, this);
+                            QIcon assetItemIcon = QIcon(assetCategoryItemDir.path() + "/icon" + assetCategoryName + ".png");
+                            aci.push_back(AssetCategoryItem(assetCategoryName, assetItemIcon, painter /*vec of pairs*/));
+                        } else {
+                            painter = new GeneralAssetPaintBuilder(painterVariants, AssetPaintType::object, this);
+                            QIcon assetItemIcon = QIcon(assetCategoryItemDir.path() + "/icon" + assetCategoryName + ".png");
+                            aci.push_back(AssetCategoryItem(assetCategoryName, assetItemIcon, painter /*vec of pairs*/));
+                        }
                     }
+
                 }
             } else {
                 qDebug() << "Doesn't exist";
             }
+            std::sort(aci.begin(), aci.end(), [](AssetCategoryItem x1, AssetCategoryItem x2){
+                return x1.name() == "Terrain" ? true : (x1.name() < x2.name());
+            });
             auto* tmp = new AssetCategoryButton(CategoryAsset(assetName, QIcon(assetCategoryDir.path() + "/icon" + assetName + ".png"), aci));
             connect(tmp, &AssetCategoryButton::categoryClicked, this, &main_window::categoryButtonClicked);
             ui->scr_objects_content->layout()->addWidget(tmp);
@@ -142,24 +163,6 @@ main_window::main_window(QWidget *parent)
     connect(ui->pushButton, &QPushButton::clicked, mActionAndToolController, &controller::ActionAndToolController::moveToolClicked);
     connect(ui->btn_zoom_in, &QPushButton::clicked, mActionAndToolController, &controller::ActionAndToolController::zoomInActionClicked);
 }
-
-//    void main_window::activatedTerrain()
-//    {
-//        auto testAssetBuilder = new TestAssetPaintBuilder(AssetPaintType::terrain, this);
-//        m_state_controller->toolState().currentTool(new PaintTool(testAssetBuilder, ui->verticalLayout_2));
-//    }
-
-//    void main_window::activatedObject()
-//    {
-
-//        auto generalAssetBuilder = new GeneralAssetPaintBuilder({{"Land", QPixmap(":/icons/images/icons/land_inverted_2.png")},
-//                                                                 {"Sea", QPixmap(":/icons/images/icons/water-inverted.png")}},
-//                                                                AssetPaintType::object, this);
-
-//        auto paintTool = new PaintTool(generalAssetBuilder, ui->verticalLayout_2);
-//        m_state_controller->toolState().currentTool(paintTool);
-
-//    }
 
 
 void main_window::categoryButtonClicked(AssetPaintBuilder* painter)

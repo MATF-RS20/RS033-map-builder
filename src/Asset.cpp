@@ -36,7 +36,6 @@ namespace map_builder
         mTerrain->setPixmap(mTerrain->pixmap().scaled(mWidth, mHeight, Qt::KeepAspectRatio));
         mTerrain->setPos(pos());
         mTerrain->setZValue(1);
-        mTerrain->setFlag(QGraphicsItem::ItemIsMovable, false);
         addToGroup(mTerrain);
     }
 
