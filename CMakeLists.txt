@@ -48,6 +48,36 @@ add_executable(map_builder
         src/options_screen.cpp
         include/utils/set_style.hpp
         src/utils/set_style.cpp
+        src/controller/StateController.cpp
+        include/controller/StateController.hpp
+        include/state/GridState.hpp
+        src/state/GridState.cpp
+        src/controller/GridController.cpp
+        include/controller/GridController.hpp
+        include/utils/ImportantEventFilter.hpp
+        src/utils/ImportantEventFilter.cpp
+        include/Tool.hpp
+        src/Tool.cpp
+        include/ToolState.hpp
+        src/ToolState.cpp
+        include/utils/util.hpp
+        src/utils/util.cpp
+        include/AssetPaintBuilder.hpp
+        src/AssetPaintBuilder.cpp
+        include/Asset.hpp
+        include/AssetConfigurator.hpp
+        src/Asset.cpp
+        src/AssetConfigurator.cpp
+        include/PaintTool.hpp
+        src/PaintTool.cpp
+        include/TestAssetConfigurator.hpp
+        include/TestAssetPaintBuilder.hpp
+        src/TestAssetConfigurator.cpp
+        src/TestAssetPaintBuilder.cpp
+        include/GeneralAssetConfigurator.hpp
+        include/GeneralAssetPaintBuilder.hpp
+        src/GeneralAssetConfigurator.cpp
+        src/GeneralAssetPaintBuilder.cpp
         )
 
 target_include_directories(map_builder PUBLIC ./include)
