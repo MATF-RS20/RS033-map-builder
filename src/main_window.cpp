@@ -8,12 +8,21 @@
 #include "comunication/splash_screen_comunicatior.hpp"
 #include "utils/set_style.hpp"
 #include <QDebug>
+#include <QSpacerItem>
 #include <QDialog>
 #include <QFileDialog>
 #include <QFile>
+#include <QLabel>
 #include <QMenu>
 #include <QAction>
+#include <QCoreApplication>
+#include <QDir>
+#include <QDirIterator>
+#include <QStringList>
 #include "utils/set_style.hpp"
+#include "assetCategoryButton.hpp"
+#include "assetCategoryItem.hpp"
+#include "categoryAsset.hpp"
 
 namespace map_builder
 {
@@ -27,11 +36,52 @@ main_window::main_window(QWidget *parent)
     set_style_to_widget(this);
     QWidget::setWindowTitle(QString("Nightscream"));
 
-    // TODO: Make and comment function that makes menu bar/expandable button for assets.
-    pop_up_menu *terrain_menu = new pop_up_menu(ui->tool_btn_terrain, this);
-    terrain_menu->addAction(QIcon(":/icons/images/icons/land_inverted_2.png"), "Land");
-    terrain_menu->addAction(QIcon(":/icons/images/icons/water-inverted.png"), "Sea");
-    ui->tool_btn_terrain->setMenu(terrain_menu);
+    /* ====================================== */
+    // Adding assets from folder.
+    // NOTE: - folders must start with capital letters.
+    //       - icons must be writen in format iconFoldername
+    //       - pictures and icons end with .png
+
+    ui->scr_objects_content->layout()->addWidget(new QLabel("Assets"));
+
+    QDir assetsDir = QCoreApplication::applicationDirPath() + "/assets";
+    if (assetsDir.exists()){
+        QStringList assetLst = assetsDir.entryList();
+        for (int i = 0; i < assetLst.size(); i++){
+            QString assetName = assetLst.at(i);
+            if (assetName == '.' || assetName == ".."){
+                continue;
+            }
+            qDebug() << assetName;
+
+            QDir assetCategoryDir = QCoreApplication::applicationDirPath() + "/assets/" + assetName;
+            std::vector<AssetCategoryItem> aci;
+            if (assetCategoryDir.exists()){
+                QStringList assetCategoryLst = assetCategoryDir.entryList();
+                for (int i = 0; i < assetCategoryLst.size(); i++){
+                    QString assetCategoryName = assetCategoryLst.at(i);
+                    if (assetCategoryName == '.' || assetCategoryName == ".."){
+                        continue;
+                    }
+                    //qDebug() << assetCategoryName;
+                    QDir assetCategoryItemDir = QCoreApplication::applicationDirPath() + "/assets/" + assetName + "/" + assetCategoryName;
+                    if (assetCategoryItemDir.exists()) {
+                        QIcon assetItemIcon = QIcon(assetCategoryItemDir.path() + "/icon" + assetCategoryName + ".png");
+                        aci.push_back(AssetCategoryItem(assetCategoryName, assetItemIcon));
+                    }
+                }
+            } else {
+                qDebug() << "Doesn't exist";
+            }
+            ui->scr_objects_content->layout()->addWidget(new AssetCategoryButton(CategoryAsset(assetName, QIcon(assetCategoryDir.path() + "/icon" + assetName + ".png"), aci)));
+        }
+    } else {
+        qDebug() << "Desn't exist.";
+    }
+    // Spacer to push the buttons upside.
+    ui->scr_objects_content->layout()->addItem(new QSpacerItem(0, 10, QSizePolicy::Expanding, QSizePolicy::Expanding));
+    /* ============= ============== =========== */
+
 
     // Functions for actions in menu_bar.
     connect(ui->ac_new_file, &QAction::triggered, this, &main_window::create_new_project);
@@ -39,7 +89,6 @@ main_window::main_window(QWidget *parent)
     connect(ui->ac_save_file, &QAction::triggered, this, &main_window::save_project);
     connect(ui->ac_save_file_as, &QAction::triggered, this, &main_window::save_as_project);
     connect(ui->ac_exit, &QAction::triggered, this, &main_window::exit_project);
-
 }
 
 // Function for creating new project.

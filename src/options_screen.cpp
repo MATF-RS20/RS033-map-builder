@@ -27,9 +27,9 @@ options_screen::options_screen(QWidget *parent) :
 
     // Buttons for initialization options:
     connect(ui->btn_new, &QPushButton::released, this, &options_screen::create_new_project);
-    connect(ui->btn_load, &QPushButton::released, this,  &options_screen::create_new_project);
-    connect(ui->btn_manual, &QPushButton::released, this,  &options_screen::create_new_project);
-    connect(ui->btn_exit, &QPushButton::released, this,  &options_screen::create_new_project);
+    connect(ui->btn_load, &QPushButton::released, this,  &options_screen::load_project);
+    connect(ui->btn_manual, &QPushButton::released, this,  &options_screen::open_manual);
+    connect(ui->btn_exit, &QPushButton::released, this,  &options_screen::exit);
 
     // Adding preview image to label
     QPixmap pixmap(":/images/images/preview.jpg");
