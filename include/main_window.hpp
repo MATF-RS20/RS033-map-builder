@@ -16,8 +16,17 @@ namespace map_builder {
         explicit main_window(QWidget *parent= nullptr);
         ~main_window() override;
 
+    // Slots for actions in menu_bar.
+    private slots:
+        void create_new_project();
+        void open_project();
+        void save_project();
+        void save_as_project();
+        void exit_project();
+
     private:
        Ui::main_window *ui;
+       void close_window();
     };
 }
 #endif

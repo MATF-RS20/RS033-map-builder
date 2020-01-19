@@ -21,6 +21,9 @@ add_executable(map_builder
         include/main_window.hpp
         include/linear_executor.hpp
         include/mp/make_index.hpp
+        include/categoryAsset.hpp
+        include/assetCategoryItem.hpp
+        include/assetCategoryButton.hpp
         src/main.cpp
         ./resources.qrc
         include/mp/pack.hpp
@@ -29,6 +32,9 @@ add_executable(map_builder
         include/mp/types.hpp
         include/splash_screen.hpp
         src/splash_screen.cpp
+        src/categoryAsset.cpp
+        src/assetCategoryItem.cpp
+        src/assetCategoryButton.cpp
         include/init_worker.hpp
         src/init_worker.cpp
         include/comunicator.hpp
