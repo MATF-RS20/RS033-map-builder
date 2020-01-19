@@ -2,6 +2,7 @@
 #define __MAIN_WINDOW_HPP__
 
 #include <QMainWindow>
+#include <controller/ActionAndToolController.hpp>
 #include "controller/StateController.hpp"
 #include "controller/GridController.hpp"
 #include "AssetPaintBuilder.hpp"
@@ -30,6 +31,7 @@ namespace map_builder {
        Ui::main_window *ui;
        controller::StateController *m_state_controller;
        controller::GridController *m_grid_controller;
+       controller::ActionAndToolController *mActionAndToolController;
 
         void close_window();
     // Slots for actions in menu_bar.
