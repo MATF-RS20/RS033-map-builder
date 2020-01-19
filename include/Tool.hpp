@@ -16,9 +16,12 @@ namespace map_builder
     {
     public:
         Tool(QLayout *configurationLayout, QObject *parent = nullptr);
-        virtual void startedDrag(QPoint point, Qt::MouseButton button) = 0;
-        virtual void draged() = 0;
-        virtual void endedDrag(QPoint point, Qt::MouseButton button) = 0;
+        virtual void startedDrag(controller::StateController *stateController, QGraphicsScene *scene, QPoint point,
+                                 Qt::MouseButton button) = 0;
+        virtual void draged(controller::StateController *stateController, QGraphicsScene *scene, QVector2D dragedDirection,
+                            Qt::MouseButtons button) = 0;
+        virtual void endedDrag(controller::StateController *stateController, QGraphicsScene *scene, QPoint point,
+                               Qt::MouseButton button) = 0;
         virtual void clicked(controller::StateController *stateController, QGraphicsScene *scene,
                             QPointF point, Qt::MouseButton button) = 0;
 

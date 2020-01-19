@@ -11,11 +11,14 @@ namespace map_builder
     public:
         PaintTool(AssetPaintBuilder *paint, QLayout *configurationLayout, QObject *parent = nullptr);
         ~PaintTool();
-        void startedDrag(QPoint point, Qt::MouseButton button) override;
+        void startedDrag(controller::StateController *stateController, QGraphicsScene *scene, QPoint point,
+                         Qt::MouseButton button) override;
 
-        void draged() override;
+        void draged(controller::StateController *stateController, QGraphicsScene *scene, QVector2D dragedDirection,
+                    Qt::MouseButtons button) override;
 
-        void endedDrag(QPoint point, Qt::MouseButton button) override;
+        void endedDrag(controller::StateController *stateController, QGraphicsScene *scene, QPoint point,
+                       Qt::MouseButton button) override;
 
         void clicked(controller::StateController *stateController, QGraphicsScene *scene, QPointF point,
                      Qt::MouseButton button) override;
