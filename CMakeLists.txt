@@ -24,6 +24,7 @@ add_executable(map_builder
         include/categoryAsset.hpp
         include/assetCategoryItem.hpp
         include/assetCategoryButton.hpp
+        include/AssetCategoryItemAction.hpp
         src/main.cpp
         ./resources.qrc
         include/mp/pack.hpp
@@ -35,6 +36,7 @@ add_executable(map_builder
         src/categoryAsset.cpp
         src/assetCategoryItem.cpp
         src/assetCategoryButton.cpp
+        src/AssetCategoryItemAction.cpp
         include/init_worker.hpp
         src/init_worker.cpp
         include/comunicator.hpp

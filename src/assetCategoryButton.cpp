@@ -9,8 +9,6 @@ namespace  map_builder {
 // Constructor.
 AssetCategoryButton::AssetCategoryButton(CategoryAsset category) : mCategory(category)
 {
-    // U mainu fake category sa biklo kijim iconom
-    // bilo koji ajtemui
 
     setToolTip(mCategory.name());
     setToolTipDuration(5000);
@@ -19,7 +17,10 @@ AssetCategoryButton::AssetCategoryButton(CategoryAsset category) : mCategory(cat
 
     for (int i = 0; i<mCategory.size(); i++)
     {
-        mAssetItemsMenu->addAction(mCategory[i].icon(), mCategory[i].name());
+        AssetCategoryItemAction *action = mCategory[i].toAction();
+        connect(action, &AssetCategoryItemAction::categoryActionActivated, this, &AssetCategoryButton::categoryActionTriggered);
+
+        mAssetItemsMenu->addAction(action);
     }
 
     setMenu(mAssetItemsMenu);
@@ -27,5 +28,11 @@ AssetCategoryButton::AssetCategoryButton(CategoryAsset category) : mCategory(cat
     setFixedSize(64, 32);
     setIconSize(QSize(64, 32));
 }
+
+void AssetCategoryButton::categoryActionTriggered(AssetPaintBuilder* painter)
+{
+    emit categoryClicked(painter);
+}
+
 
 }

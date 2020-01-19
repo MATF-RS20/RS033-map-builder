@@ -52,12 +52,6 @@ main_window::main_window(QWidget *parent)
 
     set_style_to_widget(this);
 
-    // TODO: Make and comment function that makes menu bar/expandable button for assets.
-    pop_up_menu *terrain_menu = new pop_up_menu(ui->tool_btn_terrain, this);
-    terrain_menu->addAction(QIcon(":/icons/images/icons/land_inverted_2.png"), "Land", this, &main_window::activatedTerrain);
-    terrain_menu->addAction(QIcon(":/icons/images/icons/water-inverted.png"), "Sea", this, &main_window::activatedObject);
-    ui->tool_btn_terrain->setMenu(terrain_menu);
-
     /* ====================================== */
     // Adding assets from folder.
     // NOTE: - folders must start with capital letters.
@@ -83,20 +77,28 @@ main_window::main_window(QWidget *parent)
                 QStringList assetCategoryLst = assetCategoryDir.entryList();
                 for (int i = 0; i < assetCategoryLst.size(); i++){
                     QString assetCategoryName = assetCategoryLst.at(i);
+                    QPair<QString, QPixmap> pair = QPair<QString, QPixmap>(assetCategoryName, QPixmap(QCoreApplication::applicationDirPath() + "/assets/" + assetName + "/" + assetCategoryName + ".png"));
+
+                    QVector<QPair<QString, QPixmap>> painterVariants;
+                    painterVariants.push_back(pair);
+                    GeneralAssetPaintBuilder *painter = new GeneralAssetPaintBuilder(painterVariants, AssetPaintType::object, this);
                     if (assetCategoryName == '.' || assetCategoryName == ".."){
                         continue;
                     }
+
                     //qDebug() << assetCategoryName;
                     QDir assetCategoryItemDir = QCoreApplication::applicationDirPath() + "/assets/" + assetName + "/" + assetCategoryName;
                     if (assetCategoryItemDir.exists()) {
                         QIcon assetItemIcon = QIcon(assetCategoryItemDir.path() + "/icon" + assetCategoryName + ".png");
-                        aci.push_back(AssetCategoryItem(assetCategoryName, assetItemIcon));
+                        aci.push_back(AssetCategoryItem(assetCategoryName, assetItemIcon, painter /*vec of pairs*/));
                     }
                 }
             } else {
                 qDebug() << "Doesn't exist";
             }
-            ui->scr_objects_content->layout()->addWidget(new AssetCategoryButton(CategoryAsset(assetName, QIcon(assetCategoryDir.path() + "/icon" + assetName + ".png"), aci)));
+            auto* tmp = new AssetCategoryButton(CategoryAsset(assetName, QIcon(assetCategoryDir.path() + "/icon" + assetName + ".png"), aci));
+            connect(tmp, &AssetCategoryButton::categoryClicked, this, &main_window::categoryButtonClicked);
+            ui->scr_objects_content->layout()->addWidget(tmp);
         }
     } else {
         qDebug() << "Desn't exist.";
@@ -109,7 +111,6 @@ main_window::main_window(QWidget *parent)
     ui->scr_objects_content->layout()->addItem(new QSpacerItem(0, 10, QSizePolicy::Expanding, QSizePolicy::Expanding));
     /* ============= ============== =========== */
 
-
     // Functions for actions in menu_bar.
     connect(ui->ac_new_file, &QAction::triggered, this, &main_window::create_new_project);
     connect(ui->ac_open_file, &QAction::triggered, this, &main_window::open_project);
@@ -118,23 +119,30 @@ main_window::main_window(QWidget *parent)
     connect(ui->ac_exit, &QAction::triggered, this, &main_window::exit_project);
 }
 
-    void main_window::activatedTerrain()
-    {
-        auto testAssetBuilder = new TestAssetPaintBuilder(AssetPaintType::terrain, this);
-        m_state_controller->toolState().currentTool(new PaintTool(testAssetBuilder, ui->verticalLayout_2));
-    }
+//    void main_window::activatedTerrain()
+//    {
+//        auto testAssetBuilder = new TestAssetPaintBuilder(AssetPaintType::terrain, this);
+//        m_state_controller->toolState().currentTool(new PaintTool(testAssetBuilder, ui->verticalLayout_2));
+//    }
 
-    void main_window::activatedObject()
-    {
+//    void main_window::activatedObject()
+//    {
 
-        auto generalAssetBuilder = new GeneralAssetPaintBuilder({{"Land", QPixmap(":/icons/images/icons/land_inverted_2.png")},
-                                                                 {"Sea", QPixmap(":/icons/images/icons/water-inverted.png")}},
-                                                                AssetPaintType::object, this);
+//        auto generalAssetBuilder = new GeneralAssetPaintBuilder({{"Land", QPixmap(":/icons/images/icons/land_inverted_2.png")},
+//                                                                 {"Sea", QPixmap(":/icons/images/icons/water-inverted.png")}},
+//                                                                AssetPaintType::object, this);
 
-        auto paintTool = new PaintTool(generalAssetBuilder, ui->verticalLayout_2);
-        m_state_controller->toolState().currentTool(paintTool);
+//        auto paintTool = new PaintTool(generalAssetBuilder, ui->verticalLayout_2);
+//        m_state_controller->toolState().currentTool(paintTool);
 
-    }
+//    }
+
+
+void main_window::categoryButtonClicked(AssetPaintBuilder* painter)
+{
+    m_state_controller->toolState().currentTool(new PaintTool(painter, ui->verticalLayout_2));
+    qDebug() << "Hi from main_window";
+}
 
 // Function for creating new project.
 void main_window::create_new_project()

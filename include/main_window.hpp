@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "controller/StateController.hpp"
 #include "controller/GridController.hpp"
+#include "AssetPaintBuilder.hpp"
 
 namespace Ui
 {
@@ -21,8 +22,10 @@ namespace map_builder {
 
 
     public slots:
-        void activatedTerrain();
-        void activatedObject();
+//        void activatedTerrain();
+//        void activatedObject();
+
+
     private:
        Ui::main_window *ui;
        controller::StateController *m_state_controller;
@@ -31,6 +34,7 @@ namespace map_builder {
         void close_window();
     // Slots for actions in menu_bar.
     private slots:
+        void categoryButtonClicked(AssetPaintBuilder* painter);
         void create_new_project();
         void open_project();
         void save_project();
