@@ -1,4 +1,5 @@
 #include <ZoomInAction.hpp>
+#include <SelectTool.hpp>
 #include "controller/ActionAndToolController.hpp"
 #include "MoveTool.hpp"
 
@@ -48,12 +49,12 @@ namespace map_builder::controller
 
     void ActionAndToolController::moveToolClicked()
     {
-        mStateController->toolState().currentTool(new MoveTool(mConfiguratorLayout, this));
+        mStateController->toolState().currentTool(new MoveTool(mConfiguratorLayout));
     }
 
     void ActionAndToolController::selectToolClicked()
     {
-
+        mStateController->toolState().currentTool(new SelectTool(mConfiguratorLayout));
     }
 }
 

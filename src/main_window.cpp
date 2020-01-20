@@ -162,6 +162,7 @@ main_window::main_window(QWidget *parent)
 
     connect(ui->pushButton, &QPushButton::clicked, mActionAndToolController, &controller::ActionAndToolController::moveToolClicked);
     connect(ui->btn_zoom_in, &QPushButton::clicked, mActionAndToolController, &controller::ActionAndToolController::zoomInActionClicked);
+    connect(ui->btn_select_mode, &QPushButton::clicked, mActionAndToolController, &controller::ActionAndToolController::selectToolClicked);
 }
 
 

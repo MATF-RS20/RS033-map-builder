@@ -8,7 +8,7 @@ namespace map_builder
     class MoveTool : public Tool
     {
     public:
-        MoveTool(QLayout *configurationLayout, QObject *parent);
+        MoveTool(QLayout *configurationLayout, QObject *parent = nullptr);
 
         void startedDrag(controller::StateController *stateController, QGraphicsScene *scene, QPoint point,
                          Qt::MouseButton button) override;

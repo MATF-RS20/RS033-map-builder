@@ -112,7 +112,8 @@ namespace map_builder::controller
             {
                 if(mStateController->toolState().currentTool())
                 {
-                    mStateController->toolState().currentTool()->endedDrag(mStateController, mScene, point, button);
+                    mStateController->toolState().currentTool()->endedDrag(mStateController, mScene,
+                            mMap->mapToScene(point).toPoint(), button);
                 }
             }
     }
@@ -123,7 +124,8 @@ namespace map_builder::controller
         {
             if(mStateController->toolState().currentTool())
             {
-                mStateController->toolState().currentTool()->startedDrag(mStateController, mScene, point, button);
+                mStateController->toolState().currentTool()->startedDrag(mStateController, mScene,
+                        mMap->mapToScene(point).toPoint(), button);
             }
         }
     }
