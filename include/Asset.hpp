@@ -15,6 +15,8 @@ namespace map_builder
         void terrain(QGraphicsPixmapItem *terrain, AssetPaintBuilder *terrainBuilder);
         void object(QGraphicsPixmapItem *terrain, AssetPaintBuilder *terrainBuilder);
 
+        void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
+
     private:
         QGraphicsPixmapItem *mTerrain;
         QGraphicsPixmapItem *mObject;

@@ -1,6 +1,7 @@
 #include <Asset.hpp>
 #include <QGraphicsScene>
 #include <QDebug>
+#include <QPainter>
 
 namespace map_builder
 {
@@ -17,6 +18,15 @@ namespace map_builder
         if(mSelectRectangle)
         {
             removeFromGroup(mSelectRectangle);
+        }
+    }
+
+    void Asset::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
+        QGraphicsItemGroup::paint(painter, option, widget);
+        if(isSelected())
+        {
+            painter->setPen(QPen(QBrush(QColor("#ffbf00")), 5));
+            painter->drawRect(boundingRect());
         }
     }
 
@@ -73,6 +83,7 @@ namespace map_builder
 
         setX(x);
         setY(y);
+        setFlag(QGraphicsItem::ItemIsSelectable);
     }
 
 
