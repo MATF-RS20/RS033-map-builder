@@ -40,7 +40,7 @@
         <file>images/icons/delete_golden.png</file>
     </qresource>
     <qresource prefix="/images">
-        <file>images/preview.jpg</file>
+        <file>images/preview.png</file>
     </qresource>
     <qresource prefix="/manual">
         <file>manual.txt</file>

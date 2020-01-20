@@ -32,7 +32,8 @@ options_screen::options_screen(QWidget *parent) :
     connect(ui->btn_exit, &QPushButton::released, this,  &options_screen::exit);
 
     // Adding preview image to label
-    QPixmap pixmap(":/images/images/preview.jpg");
+    QPixmap pixmap(":/images/images/preview.png");
+    pixmap = pixmap.scaled(width()*1.5, height()*1.5, Qt::KeepAspectRatio);
     ui->lb_img->setPixmap(pixmap);
 
 }
