@@ -2,6 +2,10 @@
 #define MAP_MAKER_UTIL_HPP
 
 #include <QObject>
+namespace map_builder
+{
+    class Asset;
+}
 namespace utils
 {
     /**
@@ -11,6 +15,7 @@ namespace utils
     */
     void adopt_object(QObject *object, QObject *parent);
     QRectF getRectFromPoint(const QPointF &point);
+    map_builder::Asset* findAssetIfItExists(const QList<QGraphicsItem*> &list);
 
 }
 

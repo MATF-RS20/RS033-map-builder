@@ -11,19 +11,7 @@ namespace map_builder
 {
     namespace details
     {
-        Asset* findAssetIfItExists(const QList<QGraphicsItem*> &list)
-        {
-            Asset *asset{nullptr};
-            for(auto *item : list)
-            {
-                asset = dynamic_cast<Asset*>(item);
-                if(asset != nullptr)
-                {
-                    return asset;
-                }
-            }
-            return nullptr;
-        }
+
     }
     void PaintTool::startedDrag(controller::StateController *stateController, QGraphicsScene *scene, QPoint point,
                                 Qt::MouseButton button)
@@ -49,7 +37,7 @@ namespace map_builder
         QList<QGraphicsItem *>items = scene->items(point);
 
 
-        Asset *asset = details::findAssetIfItExists(items);
+        Asset *asset = utils::findAssetIfItExists(items);
         qDebug() << asset;
         if(!asset)
         {
