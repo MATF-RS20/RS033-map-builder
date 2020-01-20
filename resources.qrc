@@ -37,6 +37,7 @@
         <file>images/icons/rotate_right_golden.png</file>
         <file>images/icons/select_arrow_golden.png</file>
         <file>images/icons/move.png</file>
+        <file>images/icons/delete_golden.png</file>
     </qresource>
     <qresource prefix="/images">
         <file>images/preview.jpg</file>

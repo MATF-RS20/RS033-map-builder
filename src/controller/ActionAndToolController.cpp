@@ -1,5 +1,9 @@
 #include <ZoomInAction.hpp>
 #include <SelectTool.hpp>
+#include <ZoomOutAction.hpp>
+#include <RotateContraAction.hpp>
+#include <RotateClockAction.hpp>
+#include <DeleteAction.hpp>
 #include "controller/ActionAndToolController.hpp"
 #include "MoveTool.hpp"
 
@@ -15,14 +19,11 @@ namespace map_builder::controller
     {
     }
 
-    void ActionAndToolController::undoActionClicked()
+    void ActionAndToolController::deleteActionClicked()
     {
-
-    }
-
-    void ActionAndToolController::redoActionClicked()
-    {
-
+        Action *action = new DeleteAction();
+        action->applyAction(mScene, mStateController);
+        action->deleteLater();
     }
 
     void ActionAndToolController::zoomInActionClicked()
@@ -34,17 +35,23 @@ namespace map_builder::controller
 
     void ActionAndToolController::zoomOutActionClicked()
     {
-
+        Action *action = new ZoomOutAction();
+        action->applyAction(mScene, mStateController);
+        action->deleteLater();
     }
 
     void ActionAndToolController::rotateContraActionClicked()
     {
-
+        Action *action = new RotateContraAction();
+        action->applyAction(mScene, mStateController);
+        action->deleteLater();
     }
 
     void ActionAndToolController::rotateClockActionClicked()
     {
-
+        Action *action = new RotateClockAction();
+        action->applyAction(mScene, mStateController);
+        action->deleteLater();
     }
 
     void ActionAndToolController::moveToolClicked()

@@ -26,13 +26,7 @@
       <item row="0" column="0" colspan="2">
        <layout class="QHBoxLayout" name="layout_action_and_tools">
         <item>
-         <widget class="QPushButton" name="btn_undo">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
+         <widget class="QPushButton" name="btn_delete">
           <property name="minimumSize">
            <size>
             <width>20</width>
@@ -50,65 +44,7 @@
           </property>
           <property name="icon">
            <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/undo_golden.png</normaloff>:/icons/images/icons/undo_golden.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>32</width>
-            <height>16</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btn_redo">
-          <property name="minimumSize">
-           <size>
-            <width>20</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/redo_golden.png</normaloff>:/icons/images/icons/redo_golden.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>32</width>
-            <height>16</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btn_preview">
-          <property name="minimumSize">
-           <size>
-            <width>20</width>
-            <height>20</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../resources.qrc">
-            <normaloff>:/icons/images/icons/preview_golden.png</normaloff>:/icons/images/icons/preview_golden.png</iconset>
+            <normaloff>:/icons/images/icons/delete_golden.png</normaloff>:/icons/images/icons/delete_golden.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -460,7 +396,7 @@
     <property name="title">
      <string>&amp;File</string>
     </property>
-    <addaction name="ac_new_file"/>
+    <addaction name="ac_export_file"/>
     <addaction name="separator"/>
     <addaction name="ac_open_file"/>
     <addaction name="ac_save_file"/>
@@ -487,9 +423,9 @@
     <string>&amp;Save</string>
    </property>
   </action>
-  <action name="ac_new_file">
+  <action name="ac_export_file">
    <property name="text">
-    <string>&amp;New</string>
+    <string>&amp;Export</string>
    </property>
   </action>
   <action name="ac_save_file_as">
@@ -499,7 +435,7 @@
   </action>
   <action name="ac_exit">
    <property name="text">
-    <string>&amp;Exit</string>
+    <string>E&amp;xit</string>
    </property>
   </action>
  </widget>

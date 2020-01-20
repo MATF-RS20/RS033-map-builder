@@ -47,7 +47,7 @@ main_window::main_window(QWidget *parent)
 
 
 
-    m_state_controller = new controller::StateController(new state::GridState(10, 10), new state::ToolState,this);
+    m_state_controller = new controller::StateController(new state::GridState(20, 20), new state::ToolState,this);
     m_grid_controller = new controller::GridController(ui->graphics_view_grid, ui->graphics_view_minimap,
                                                        m_state_controller, this);
 
@@ -154,7 +154,7 @@ main_window::main_window(QWidget *parent)
     /* ============= ============== =========== */
 
     // Functions for actions in menu_bar.
-    connect(ui->ac_new_file, &QAction::triggered, this, &main_window::create_new_project);
+    connect(ui->ac_export_file, &QAction::triggered, this, &main_window::export_project);
     connect(ui->ac_open_file, &QAction::triggered, this, &main_window::open_project);
     connect(ui->ac_save_file, &QAction::triggered, this, &main_window::save_project);
     connect(ui->ac_save_file_as, &QAction::triggered, this, &main_window::save_as_project);
@@ -163,6 +163,10 @@ main_window::main_window(QWidget *parent)
     connect(ui->pushButton, &QPushButton::clicked, mActionAndToolController, &controller::ActionAndToolController::moveToolClicked);
     connect(ui->btn_zoom_in, &QPushButton::clicked, mActionAndToolController, &controller::ActionAndToolController::zoomInActionClicked);
     connect(ui->btn_select_mode, &QPushButton::clicked, mActionAndToolController, &controller::ActionAndToolController::selectToolClicked);
+    connect(ui->btn_zoom_out, &QPushButton::clicked, mActionAndToolController, &controller::ActionAndToolController::zoomOutActionClicked);
+    connect(ui->btn_rotate_right, &QPushButton::clicked, mActionAndToolController, &controller::ActionAndToolController::rotateContraActionClicked);
+    connect(ui->btn_rotate_left, &QPushButton::clicked, mActionAndToolController, &controller::ActionAndToolController::rotateClockActionClicked);
+    connect(ui->btn_delete, &QPushButton::clicked, mActionAndToolController, &controller::ActionAndToolController::deleteActionClicked);
 }
 
 
@@ -171,22 +175,32 @@ void main_window::categoryButtonClicked(AssetPaintBuilder* painter)
     m_state_controller->toolState().currentTool(new PaintTool(painter, ui->verticalLayout_2));
 }
 
-// Function for creating new project.
-void main_window::create_new_project()
+// Function for exporting project.
+void main_window::export_project()
 {
+    QPixmap pixImage = ui->graphics_view_grid->grab();
+
+    constexpr int d = state::GridState::distanceBetweenCells;
+    QSize size(m_state_controller->gridState().width()*d, m_state_controller->gridState().height()*d);
+    QImage img(size, QImage::Format_ARGB32);
+    QPainter painter(&img);
+
+    ui->graphics_view_grid->scene()->setSceneRect(QRect(QPoint(0, 0), size));
+    ui->graphics_view_grid->scene()->render(&painter);
+
+
     QFileDialog dialog;
     dialog.setStyleSheet("style.qss");
-    QString new_project = QFileDialog::getSaveFileName(this, tr("Save project"),
-                                                       "/Desktop/untitled.txt", "Images (*.jpg)", 0,
+    QString mapName = QFileDialog::getSaveFileName(this, tr("Save project"),
+                                                       "/Desktop/untitled.png", "Images (*.png)", 0,
                                                        QFileDialog::DontUseNativeDialog);
 
+    if(!mapName.isEmpty())
+    {
+      img.save(mapName);
+    }
 
-    utils::start_task<init_worker>(make_comunicator(
-            std::make_unique<splash_screen_communication>(),
-            std::make_unique<main_window_communication>())
-            );
-
-    close_window();
+    //close_window();
 }
 
 // Function for opening another project.
@@ -195,7 +209,7 @@ void main_window::open_project()
     QFileDialog dialog;
     dialog.setStyleSheet("style.qss");
     QString project = QFileDialog::getOpenFileName(this, "Select project",
-                                                       "/Desktop/untitled.txt", "Images (*.jpg)", 0,
+                                                       "/Desktop/untitled", "Images (*.jpg)", 0,
                                                        QFileDialog::DontUseNativeDialog);
 
     utils::start_task<init_worker>(make_comunicator(

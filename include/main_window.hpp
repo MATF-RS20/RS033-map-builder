@@ -35,7 +35,7 @@ namespace map_builder {
     // Slots for actions in menu_bar.
     private slots:
         void categoryButtonClicked(AssetPaintBuilder* painter);
-        void create_new_project();
+        void export_project();
         void open_project();
         void save_project();
         void save_as_project();

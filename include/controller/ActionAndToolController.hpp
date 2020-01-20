@@ -14,8 +14,7 @@ namespace map_builder::controller
 
 
     public slots:
-        void undoActionClicked();
-        void redoActionClicked();
+        void deleteActionClicked();
         void zoomInActionClicked();
         void zoomOutActionClicked();
         void rotateContraActionClicked();

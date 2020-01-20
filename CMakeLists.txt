@@ -93,9 +93,17 @@ add_executable(map_builder
         src/MoveTool.cpp
         include/MoveTool.hpp
         include/ZoomInAction.hpp
+        include/ZoomOutAction.hpp
+        include/RotateContraAction.hpp
+        include/RotateClockAction.hpp
+        include/DeleteAction.hpp
+        src/RotateContraAction.cpp
+        src/RotateClockAction.cpp
         src/ZoomInAction.cpp
         src/SelectTool.cpp
+        src/DeleteAction.cpp
         include/SelectTool.hpp
+        src/ZoomOutAction.cpp
         )
 
 target_include_directories(map_builder PUBLIC ./include)
