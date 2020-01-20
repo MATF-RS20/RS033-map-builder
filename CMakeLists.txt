@@ -94,6 +94,8 @@ add_executable(map_builder
         include/MoveTool.hpp
         include/ZoomInAction.hpp
         src/ZoomInAction.cpp
+        src/SelectTool.cpp
+        include/SelectTool.hpp
         )
 
 target_include_directories(map_builder PUBLIC ./include)
