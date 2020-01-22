@@ -16,6 +16,8 @@ namespace utils
     void adopt_object(QObject *object, QObject *parent);
     QRectF getRectFromPoint(const QPointF &point);
     map_builder::Asset* findAssetIfItExists(const QList<QGraphicsItem*> &list);
+    QGraphicsScene *loadFromFile(const QString &fileName);
+    void saveToFile(QGraphicsScene *scene, const QString &filename);
 
 }
 

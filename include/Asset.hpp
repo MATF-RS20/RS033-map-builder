@@ -10,13 +10,12 @@ namespace map_builder
     {
     public:
         Asset(float x, float y, float w, float h, QGraphicsItem *parent = nullptr);
-        void select();
-        void unselect();
         void terrain(QGraphicsPixmapItem *terrain, AssetPaintBuilder *terrainBuilder);
         void object(QGraphicsPixmapItem *terrain, AssetPaintBuilder *terrainBuilder);
 
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 
+        QJsonObject toJsonObject();
     private:
         QGraphicsPixmapItem *mTerrain;
         QGraphicsPixmapItem *mObject;

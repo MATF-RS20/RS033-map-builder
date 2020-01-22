@@ -60,6 +60,7 @@ namespace map_builder::controller
             {
                 const QVector2D slowedDownVector = dragDirection;
                 mStateController->gridState().moveSceneRect(-slowedDownVector);
+                return;
             }
 
             if(mStateController->toolState().currentTool())
@@ -108,6 +109,10 @@ namespace map_builder::controller
     void GridController::endedGridDrag(QPoint point, Qt::MouseButton button)
     {
 
+        if(button == Qt::MidButton)
+        {
+            return ;
+        }
             if(mStateController && mScene)
             {
                 if(mStateController->toolState().currentTool())
@@ -122,6 +127,10 @@ namespace map_builder::controller
     {
         if(mStateController && mScene)
         {
+            if(button == Qt::MidButton)
+            {
+                return ;
+            }
             if(mStateController->toolState().currentTool())
             {
                 mStateController->toolState().currentTool()->startedDrag(mStateController, mScene,

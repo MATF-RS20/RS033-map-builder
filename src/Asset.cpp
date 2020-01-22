@@ -2,24 +2,11 @@
 #include <QGraphicsScene>
 #include <QDebug>
 #include <QPainter>
+#include <QJsonObject>
+#include <QtCore/QBuffer>
 
 namespace map_builder
 {
-    void Asset::select()
-    {
-        if(mSelectRectangle)
-        {
-            addToGroup(mSelectRectangle);
-        }
-    }
-
-    void Asset::unselect()
-    {
-        if(mSelectRectangle)
-        {
-            removeFromGroup(mSelectRectangle);
-        }
-    }
 
     void Asset::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
         QGraphicsItemGroup::paint(painter, option, widget);
@@ -84,6 +71,25 @@ namespace map_builder
         setX(x);
         setY(y);
         setFlag(QGraphicsItem::ItemIsSelectable);
+    }
+
+    QJsonObject Asset::toJsonObject()
+    {
+        QJsonObject object;
+        object["x"] = x();
+        object["y"] = y();
+        QBuffer buffer;
+        buffer.open(QIODevice::WriteOnly);
+        mTerrain->pixmap().save(&buffer);
+        object["terrain"] = QString(buffer.data().toBase64());
+
+        QBuffer buffer1;
+        buffer1.open(QIODevice::WriteOnly);
+        mObject->pixmap().save(&buffer1);
+        object["object"] = QString(buffer.data().toBase64());
+
+        return object;
+
     }
 
 
